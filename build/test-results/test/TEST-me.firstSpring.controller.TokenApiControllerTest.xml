@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="me.firstSpring.controller.TokenApiControllerTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2023-07-27T14:50:07" hostname="DESKTOP-97S6RD5" time="0.03">
+  <properties/>
+  <testcase name="createNewAccessToken : 새로운 액세스 토큰을 발급한다." classname="me.firstSpring.controller.TokenApiControllerTest" time="0.03"/>
+  <system-out><![CDATA[2023-07-27T23:50:07.318+09:00  INFO 10784 --- [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [me.firstSpring.controller.TokenApiControllerTest]: TokenApiControllerTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2023-07-27T23:50:07.320+09:00  INFO 10784 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration me.firstSpring.Main for test class me.firstSpring.controller.TokenApiControllerTest
+2023-07-27T23:50:07.325+09:00  INFO 10784 --- [    Test worker] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2023-07-27T23:50:07.325+09:00  INFO 10784 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2023-07-27T23:50:07.326+09:00  INFO 10784 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+Hibernate: 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.nickname,
+        u1_0.password 
+    from
+        users u1_0
+Hibernate: 
+    delete 
+    from
+        users 
+    where
+        id=?
+Hibernate: 
+    insert 
+    into
+        users
+        (id, email, nickname, password) 
+    values
+        (default, ?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        re_fresh_token
+        (id, refresh_token, user_id) 
+    values
+        (default, ?, ?)
+Hibernate: 
+    select
+        r1_0.id,
+        r1_0.refresh_token,
+        r1_0.user_id 
+    from
+        re_fresh_token r1_0 
+    where
+        r1_0.refresh_token=?
+Hibernate: 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.nickname,
+        u1_0.password 
+    from
+        users u1_0 
+    where
+        u1_0.id=?
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
