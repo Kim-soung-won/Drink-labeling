@@ -13,7 +13,7 @@
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
     <connection id="63daf406-ba8b-4696-8750-b15b89d268b9">
-      <console name="Connection" type="STANDARD" schema="mysql" session="Main"><![CDATA[create database blog;
+      <console name="Connection" type="STANDARD" schema="blog" session="Main"><![CDATA[create database blog;
 use blog;
 
 create table article(

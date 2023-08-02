@@ -26,6 +26,6 @@ public class UserService {
     }
     public User findByEmail(String email){
         return userRepository.findByEmail(email)
-                .orElseThrow(()-> new IllegalArgumentException("Unexpecter user"));
+                .orElseThrow(()-> new IllegalArgumentException("Unexpected user"));
     }
 }

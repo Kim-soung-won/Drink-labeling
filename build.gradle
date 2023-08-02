@@ -19,6 +19,8 @@ repositories {
 }
 
 dependencies {
+    implementation 'mysql:mysql-connector-java'
+
     implementation 'org.springframework.boot:spring-boot-starter-web'
     //개발하며 필요한 기능의 의존성 입력한 값은 웹 관련 기능
 
