@@ -16,6 +16,7 @@ import java.util.List;
 public class BlogService {
     private final BlogRepository blogRepository;
 
+    @Transactional
     public Article save(AddArticleRequest request, String userName){ //블로그 글을 추가하는 메서드
         return blogRepository.save(request.toEntity(userName));
     } // 글 작성
