@@ -31,7 +31,10 @@ dependencies {
 //    스프링 시큐리티를 사용하기 위한 스타터 추가
 
     implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity6'
-//    타임리프에서 스프링 시큐리티를 사용하기 위한 의존성 추가x
+//    타임리프에서 스프링 시큐리티를 사용하기 위한 의존성 추가
+
+    runtimeOnly 'com.h2database:h2'
+//    로컬환경과 테스트환경에서 사용할 인메모리 데이터베이스 H2
 
     compileOnly 'org.projectlombok:lombok'
 //    반복 메서드 작성 작업을 줄여주는 lombok
