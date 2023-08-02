@@ -2,7 +2,7 @@
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://awseb-e-mxqdc8c8uu-stack-awsebrdsdatabase-vnt1jiyscxwr.cwrpks7ka0ox.ap-northeast-2.rds.amazonaws.com:3306/aws
+    url: jdbc:mysql://awseb-e-mxqdc8c8uu-stack-awsebrdsdatabase-vnt1jiyscxwr.cwrpks7ka0ox.ap-northeast-2.rds.amazonaws.com:3306/blog
     username: ebroot
     password: as3481611!
   jpa:
