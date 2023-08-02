@@ -38,12 +38,10 @@ public class Article {
     private LocalDateTime updateAt;
 
     @Builder
-    public Article(String author, String title, String content, LocalDateTime createAt, LocalDateTime updateAt) {
+    public Article(String author, String title, String content) {
         this.author = author;
         this.title = title;
         this.content = content;
-        this.createAt = createAt;
-        this.updateAt = updateAt;
     }
 
     public void update(String title, String content) {
