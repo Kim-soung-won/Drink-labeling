@@ -24,6 +24,7 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
 import java.security.Principal;
+import java.time.LocalDateTime;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -169,8 +170,9 @@ class BlogApiControllerTest {
 
         final String newTitle = "new title";
         final String newContent = "new content";
+        final LocalDateTime updateAt = LocalDateTime.now();
 
-        UpdateArticleRequest request = new UpdateArticleRequest(newTitle, newContent);
+        UpdateArticleRequest request = new UpdateArticleRequest(newTitle, newContent,updateAt);
 
         // when
         ResultActions result = mockMvc.perform(put(url, savedArticle.getId())

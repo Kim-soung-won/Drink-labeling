@@ -87,6 +87,10 @@ create table users(
     </connection>
     <connection id="bef8ecae-a988-4e6b-8d21-72c9422e5113" />
   </component>
+  <component name="DBNavigator.Project.DatasetFilterManager">
+    <filter-actions connection-id="63daf406-ba8b-4696-8750-b15b89d268b9" dataset="blog.article" active-filter-id="" />
+    <filter-actions connection-id="63daf406-ba8b-4696-8750-b15b89d268b9" dataset="blog.Article" active-filter-id="" />
+  </component>
   <component name="DBNavigator.Project.ExecutionManager">
     <retain-sticky-names value="false" />
   </component>
