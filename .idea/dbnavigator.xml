@@ -14,7 +14,8 @@
   <component name="DBNavigator.Project.DatabaseConsoleManager">
     <connection id="63daf406-ba8b-4696-8750-b15b89d268b9">
       <console name="Connection" type="STANDARD" schema="blog" session="Main"><![CDATA[use blog;
-select * from article
+select * from blog.users
+select * from blog.re_fresh_token
 
 --create table article(
 --    id bigint not null AUTO_INCREMENT,
