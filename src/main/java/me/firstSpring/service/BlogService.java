@@ -9,6 +9,7 @@ import me.firstSpring.repository.BlogRepository;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @RequiredArgsConstructor //final이 붙거나 @NotNull이 붙은 필드의 생성자 추가
@@ -18,7 +19,8 @@ public class BlogService {
 
     @Transactional
     public Article save(AddArticleRequest request, String userName){ //블로그 글을 추가하는 메서드
-        return blogRepository.save(request.toEntity(userName));
+        LocalDateTime createdAt = LocalDateTime.now();
+        return blogRepository.save(request.toEntity(userName, createdAt));
     } // 글 작성
 
     public List<Article> findAll(){
@@ -44,7 +46,8 @@ public class BlogService {
                 .orElseThrow(() -> new IllegalArgumentException("not found: " + id));
 
         authorizeArticleAuthor(article);
-        article.update(request.getTitle(), request.getContent());
+        LocalDateTime updateAt = LocalDateTime.now();
+        article.update(request.getTitle(), request.getContent(),updateAt);
 
         return article;
     }
