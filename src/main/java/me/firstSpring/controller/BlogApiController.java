@@ -3,7 +3,7 @@ package me.firstSpring.controller;
 import lombok.RequiredArgsConstructor;
 import me.firstSpring.domain.Article;
 import me.firstSpring.dto.AddArticleRequest;
-import me.firstSpring.dto.ArticleReponse;
+import me.firstSpring.dto.ArticleResponse;
 import me.firstSpring.dto.UpdateArticleRequest;
 import me.firstSpring.service.BlogService;
 import org.springframework.http.HttpStatus;
@@ -30,19 +30,19 @@ public class BlogApiController {
     }
 
     @GetMapping("/api/articles")
-    public ResponseEntity<List<ArticleReponse>> findAllArticles(){
-        List<ArticleReponse> articles = blogService.findAll()//모든 게시물을 가져온 뒤 그 결과를 List<Article>형태로 반환한다.
+    public ResponseEntity<List<ArticleResponse>> findAllArticles(){
+        List<ArticleResponse> articles = blogService.findAll()//모든 게시물을 가져온 뒤 그 결과를 List<Article>형태로 반환한다.
                 .stream()//List<Article> 형태를 스트림으로 변환한다.
-                .map(ArticleReponse::new)//Article 객체를 새로운 ArticleReponse객채로 반환한다.
+                .map(ArticleResponse::new)//Article 객체를 새로운 ArticleResponse객채로 반환한다.
                 .toList();//map메소드로 새로운 스트림이 생성되었으니 이를 다시 리스트로 반환해 List<ArticleReponse>타입의 articles를 생성한다.
         return ResponseEntity.ok().body(articles);
     }
 
     @GetMapping("/api/articles/{id}")
-    public ResponseEntity<ArticleReponse> findArticle(@PathVariable long id){
+    public ResponseEntity<ArticleResponse> findArticle(@PathVariable long id){
         Article article = blogService.findById(id);
         return ResponseEntity.ok()
-                .body(new ArticleReponse(article));
+                .body(new ArticleResponse(article));
     }
 
     @DeleteMapping("/api/articles/{id}")

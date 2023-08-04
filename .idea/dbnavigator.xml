@@ -14,8 +14,8 @@
   <component name="DBNavigator.Project.DatabaseConsoleManager">
     <connection id="63daf406-ba8b-4696-8750-b15b89d268b9">
       <console name="Connection" type="STANDARD" schema="blog" session="Main"><![CDATA[use blog;
-select * from blog.article
---
+select * from article
+
 --create table article(
 --    id bigint not null AUTO_INCREMENT,
 --    author varchar(255) not null,
@@ -124,7 +124,7 @@ create table users(
           <deprecated-pwd value="YXMzNDgxNjExIQ==" />
         </database>
         <properties>
-          <auto-commit value="false" />
+          <auto-commit value="true" />
         </properties>
         <ssh-settings>
           <active value="false" />

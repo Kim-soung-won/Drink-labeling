@@ -4,10 +4,10 @@ import lombok.Getter;
 import me.firstSpring.domain.Article;
 
 @Getter
-public class ArticleReponse {
+public class ArticleResponse {
     private final String title;
     private final String content;
-    public ArticleReponse(Article article){
+    public ArticleResponse(Article article){
         this.title = article.getTitle();
         this.content = article.getContent();
     }
