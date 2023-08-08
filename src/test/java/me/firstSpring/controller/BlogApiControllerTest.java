@@ -18,6 +18,7 @@ import org.springframework.http.MediaType;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultActions;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
@@ -37,6 +38,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @SpringBootTest
 @AutoConfigureMockMvc
+@ActiveProfiles("test")
 class BlogApiControllerTest {
 
     @Autowired
@@ -143,22 +145,22 @@ class BlogApiControllerTest {
     }
 
 
-//    @DisplayName("deleteArticle: 아티클 삭제에 성공한다.")
-//    @Test
-//    public void deleteArticle() throws Exception {
-//        // given
-//        final String url = "/api/articles/{id}";
-//        Article savedArticle = createDefaultArticle();
-//
-//        // when
-//        mockMvc.perform(delete(url, savedArticle.getId()))
-//                .andExpect(status().isOk());
-//
-//        // then
-//        List<Article> articles = blogRepository.findAll();
-//
-//        assertThat(articles).isEmpty();
-//    }
+    @DisplayName("deleteArticle: 아티클 삭제에 성공한다.")
+    @Test
+    public void deleteArticle() throws Exception {
+        // given
+        final String url = "/api/articles/{id}";
+        Article savedArticle = createDefaultArticle();
+
+        // when
+        mockMvc.perform(delete(url, savedArticle.getId()))
+                .andExpect(status().isOk());
+
+        // then
+        List<Article> articles = blogRepository.findAll();
+
+        assertThat(articles).isEmpty();
+    }
 
 
     @DisplayName("updateArticle: 아티클 수정에 성공한다.")
