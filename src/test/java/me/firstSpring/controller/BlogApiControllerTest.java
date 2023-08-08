@@ -168,8 +168,8 @@ class BlogApiControllerTest {
         final String url = "/api/articles/{id}";
         Article savedArticle = createDefaultArticle();
 
-        final String newTitle = "new title";
-        final String newContent = "new content";
+        final String newTitle = "new secx";
+        final String newContent = "new suck";
         final LocalDateTime updateAt = LocalDateTime.now();
 
         UpdateArticleRequest request = new UpdateArticleRequest(newTitle, newContent,updateAt);
