@@ -9,6 +9,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
+
 @RequiredArgsConstructor
 @Controller
 public class UserViewController {
@@ -25,13 +29,14 @@ public class UserViewController {
 
     @GetMapping("/sign-up")
     //id 키를 가진 쿼리 파라미터의 값을 id변수에 매핑
-    public String newUser(@RequestParam(required = false) Long id, Model model){
-        if(id == null){ //id가 없으면 생성
-            model.addAttribute("users", new UserViewResponse());
-        } else{ //있으면 수정
-            User user = userService.findById(id);
-            model.addAttribute("users", new UserViewResponse(user));
-        }
+    public String newUser(Model model){
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        UserDetails userDetails = (UserDetails) authentication.getPrincipal();
+
+        String userEmail = userDetails.getUsername(); // 현재 로그인된 사용자의 이메일
+
+        model.addAttribute("users", userEmail);
+
         return "signup";
     }
 }
