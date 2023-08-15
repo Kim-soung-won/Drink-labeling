@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.oauth2.core.OAuth2AuthenticatedPrincipal;
 
 @RequiredArgsConstructor
 @Controller
@@ -29,15 +29,13 @@ public class UserViewController {
 
     @GetMapping("/sign-up")
     //id 키를 가진 쿼리 파라미터의 값을 id변수에 매핑
-    public String newUser(Model model){
+    public String newUser(Model model) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 
         if (authentication != null && authentication.isAuthenticated()) {
-            Object principal = authentication.getPrincipal();
-
-            if (principal instanceof UserDetails) {
-                UserDetails userDetails = (UserDetails) principal;
-                String userEmail = userDetails.getUsername();
+            if (authentication.getPrincipal() instanceof OAuth2AuthenticatedPrincipal) {
+                OAuth2AuthenticatedPrincipal principal = (OAuth2AuthenticatedPrincipal) authentication.getPrincipal();
+                String userEmail = principal.getAttribute("email");
 
                 User user = userService.findByEmail(userEmail);
 
@@ -48,6 +46,7 @@ public class UserViewController {
                 }
             }
         }
+
         return "signup";
     }
 }
