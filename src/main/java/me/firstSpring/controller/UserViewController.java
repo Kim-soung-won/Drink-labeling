@@ -41,17 +41,17 @@ public class UserViewController {
                 User user = userService.findByEmail(userEmail);
 
                 if (user == null) { // 사용자 정보가 없으면 새로 생성
-                    model.addAttribute("users", new UserViewResponse());
                     a = 1;
+                    model.addAttribute("users", new UserViewResponse());
                 }
                 else { // 사용자 정보가 있으면 수정
-                    model.addAttribute("users", new UserViewResponse(user));
                     a = 2;
+                    model.addAttribute("users", new UserViewResponse(user));
                 }
             }
         }
         if(a==0)
-            return "newArticle";
+            return "oauthLogin";
         else if (a==1) {
             return "example";
         } else
