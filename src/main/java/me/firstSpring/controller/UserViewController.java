@@ -34,18 +34,18 @@ public class UserViewController {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 
         if (authentication != null && authentication.isAuthenticated()) {
+            a=1;
             if (authentication.getPrincipal() instanceof OAuth2AuthenticatedPrincipal) {
+                a = 2;
                 OAuth2AuthenticatedPrincipal principal = (OAuth2AuthenticatedPrincipal) authentication.getPrincipal();
                 String userEmail = principal.getAttribute("email");
 
                 User user = userService.findByEmail(userEmail);
 
                 if (user == null) { // 사용자 정보가 없으면 새로 생성
-                    a = 1;
                     model.addAttribute("users", new UserViewResponse());
                 }
                 else { // 사용자 정보가 있으면 수정
-                    a = 2;
                     model.addAttribute("users", new UserViewResponse(user));
                 }
             }
