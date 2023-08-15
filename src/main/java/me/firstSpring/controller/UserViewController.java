@@ -41,9 +41,9 @@ public class UserViewController {
 
                 if (user == null) { // 사용자 정보가 없으면 새로 생성
                     model.addAttribute("users", new UserViewResponse());
-                    return "articleList";
                 } else { // 사용자 정보가 있으면 수정
                     model.addAttribute("users", new UserViewResponse(user));
+                    return "articleList";
                 }
             }
         }
