@@ -31,15 +31,22 @@ public class UserViewController {
     //id 키를 가진 쿼리 파라미터의 값을 id변수에 매핑
     public String newUser(Model model){
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        UserDetails userDetails = (UserDetails) authentication.getPrincipal();
 
-        String userEmail = userDetails.getUsername(); // 현재 로그인된 사용자의 이메일
+        if (authentication != null && authentication.isAuthenticated()) {
+            Object principal = authentication.getPrincipal();
 
-        User user = userService.findByEmail(userEmail);
-        if(user == null){ //id가 없으면 생성
-            model.addAttribute("users", new UserViewResponse());
-        } else{ //있으면 수정
-            model.addAttribute("users", new UserViewResponse(user));
+            if (principal instanceof UserDetails) {
+                UserDetails userDetails = (UserDetails) principal;
+                String userEmail = userDetails.getUsername();
+
+                User user = userService.findByEmail(userEmail);
+
+                if (user == null) { // 사용자 정보가 없으면 새로 생성
+                    model.addAttribute("users", new UserViewResponse());
+                } else { // 사용자 정보가 있으면 수정
+                    model.addAttribute("users", new UserViewResponse(user));
+                }
+            }
         }
         return "signup";
     }
