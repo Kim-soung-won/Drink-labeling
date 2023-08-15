@@ -35,8 +35,12 @@ public class UserViewController {
 
         String userEmail = userDetails.getUsername(); // 현재 로그인된 사용자의 이메일
 
-        model.addAttribute("users", userEmail);
-
+        User user = userService.findByEmail(userEmail);
+        if(user == null){ //id가 없으면 생성
+            model.addAttribute("users", new UserViewResponse());
+        } else{ //있으면 수정
+            model.addAttribute("users", new UserViewResponse(user));
+        }
         return "signup";
     }
 }
