@@ -80,4 +80,8 @@ public class User implements UserDetails{
         this.nickname = nickname;
         return this;
     }
+
+    public void update_data(String nickName){
+        this.nickname=nickname;
+    }
 }

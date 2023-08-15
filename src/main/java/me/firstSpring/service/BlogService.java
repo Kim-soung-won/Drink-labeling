@@ -52,6 +52,7 @@ public class BlogService {
         return article;
     }
 
+    //userName이 같은지 확인
     private static void authorizeArticleAuthor(Article article){
         String userName = SecurityContextHolder.getContext().getAuthentication().getName();
         if(!article.getAuthor().equals(userName)){

@@ -51,4 +51,5 @@ public class Article {
         this.updateAt = updateAt;
     }
 
+
 }
