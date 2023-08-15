@@ -51,8 +51,10 @@ public class UserViewController {
             }
         }
         if(a==0)
-            return "articleList";
-        else
+            return "newArticle";
+        else if (a==1) {
+            return "example";
+        } else
             return "login";
     }
 }
