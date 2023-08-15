@@ -4,8 +4,8 @@ if (createButton) {
     // 등록 버튼을 클릭하면 /api/articles로 요청을 보낸다
     createButton.addEventListener('click', event => {
         body = JSON.stringify({
-            title: document.getElementById('nickname').value,
-            content: document.getElementById('password').value
+            nickname: document.getElementById('nickname').value,
+            password: document.getElementById('password').value
         });
         function success() {
             alert('등록 완료되었습니다.');
@@ -16,7 +16,7 @@ if (createButton) {
             location.replace('/articles');
         };
 
-        httpRequest('POST','/api/articles', body, success, fail)
+        httpRequest('POST','/api/users', body, success, fail)
     });
 }
 
@@ -41,7 +41,7 @@ if (modifyButton) {
             alert('수정 실패했습니다.');
         }
 
-        httpRequest('PUT','/api/articles', body, success, fail);
+        httpRequest('PUT','/api/users', body, success, fail);
     });
 }
 
