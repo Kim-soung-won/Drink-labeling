@@ -50,7 +50,7 @@ public class UserViewController {
                 }
             }
         }
-        if(a==1)
+        if(a==0)
             return "articleList";
         else
             return "login";
