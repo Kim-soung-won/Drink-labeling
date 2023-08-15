@@ -34,11 +34,16 @@ public class UserViewController {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 
         if (authentication != null && authentication.isAuthenticated()) {
+            Object principal = authentication.getPrincipal();
+            System.out.println("Principal Class: " + principal.getClass());
             a=1;
+
             if (authentication.getPrincipal() instanceof OAuth2AuthenticatedPrincipal) {
-                a = 2;
-                OAuth2AuthenticatedPrincipal principal = (OAuth2AuthenticatedPrincipal) authentication.getPrincipal();
-                String userEmail = principal.getAttribute("email");
+                OAuth2AuthenticatedPrincipal oauthPrincipal = (OAuth2AuthenticatedPrincipal) principal;
+                String userEmail = oauthPrincipal.getAttribute("email");
+                System.out.println("User Email: " + userEmail);
+                a=2;
+
 
                 User user = userService.findByEmail(userEmail);
 
@@ -53,8 +58,8 @@ public class UserViewController {
         if(a==0)
             return "oauthLogin";
         else if (a==1) {
-            return "example";
-        } else
             return "login";
+        } else
+            return "article";
     }
 }
