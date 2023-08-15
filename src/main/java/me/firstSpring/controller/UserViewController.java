@@ -30,6 +30,7 @@ public class UserViewController {
     @GetMapping("/sign-up")
     //id 키를 가진 쿼리 파라미터의 값을 id변수에 매핑
     public String newUser(Model model) {
+        int a=0;
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 
         if (authentication != null && authentication.isAuthenticated()) {
@@ -41,13 +42,17 @@ public class UserViewController {
 
                 if (user == null) { // 사용자 정보가 없으면 새로 생성
                     model.addAttribute("users", new UserViewResponse());
-                } else { // 사용자 정보가 있으면 수정
+                    a = 1;
+                }
+                else { // 사용자 정보가 있으면 수정
                     model.addAttribute("users", new UserViewResponse(user));
-                    return "articleList";
+                    a = 2;
                 }
             }
         }
-
-        return "signup";
+        if(a==1)
+            return "articleList";
+        else
+            return "login";
     }
 }
