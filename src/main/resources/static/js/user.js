@@ -20,3 +20,30 @@ if (createButton) {
     });
 }
 
+// 수정 기능
+const modifyButton = document.getElementById('modify-btn');
+
+if (modifyButton) {
+    modifyButton.addEventListener('click', event => {
+        let params = new URLSearchParams(location.search);
+        let id = params.get('id');
+
+        body = JSON.stringify({
+            title: document.getElementById('nickname').value,
+            content: document.getElementById('password').value
+        })
+
+        function success() {
+            alert('수정 완료되었습니다.');
+            location.replace(`/articles/${id}`);
+        }
+
+        function fail() {
+            alert('수정 실패했습니다.');
+            location.replace(`/articles/${id}`);
+        }
+
+        httpRequest('PUT',`/api/articles/${id}`, body, success, fail);
+    });
+
+
