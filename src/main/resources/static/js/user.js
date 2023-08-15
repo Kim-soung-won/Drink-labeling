@@ -9,11 +9,9 @@ if (createButton) {
         });
         function success() {
             alert('등록 완료되었습니다.');
-            location.replace('/articles');
         };
         function fail() {
             alert('등록 실패했습니다.');
-            location.replace('/articles');
         };
 
         httpRequest('POST','/api/users', body, success, fail)
@@ -29,8 +27,8 @@ if (modifyButton) {
         let id = params.get('id');
 
         body = JSON.stringify({
-            title: document.getElementById('nickname').value,
-            content: document.getElementById('password').value
+            nickname: document.getElementById('nickname').value,
+            password: document.getElementById('password').value
         })
 
         function success() {
