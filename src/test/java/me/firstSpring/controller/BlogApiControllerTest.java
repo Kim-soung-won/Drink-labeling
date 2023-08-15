@@ -70,7 +70,7 @@ class BlogApiControllerTest {
     void setSecurityContext() {
         userRepository.deleteAll();
         user = userRepository.save(User.builder()
-                .email("user@gmail.com")
+                .email("test@gmail.com")
                 .password("test")
                 .build());
 
@@ -170,8 +170,8 @@ class BlogApiControllerTest {
         final String url = "/api/articles/{id}";
         Article savedArticle = createDefaultArticle();
 
-        final String newTitle = "new secx";
-        final String newContent = "new suck";
+        final String newTitle = "test Title";
+        final String newContent = "test Content";
         final LocalDateTime updateAt = LocalDateTime.now();
 
         UpdateArticleRequest request = new UpdateArticleRequest(newTitle, newContent,updateAt);

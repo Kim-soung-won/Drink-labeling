@@ -69,7 +69,7 @@ if (createButton) {
 }
 
 
-// 쿠키를 가져오는 함수
+// key 즉 자신이 가진 쿠키를 가져오는 함수
 function getCookie(key) {
     var result = null;
     var cookie = document.cookie.split(';');
