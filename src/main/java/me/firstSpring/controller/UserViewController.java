@@ -29,10 +29,15 @@ public class UserViewController {
     }
     @GetMapping("sign-up")
     public String showUserProfile(Authentication authentication, Model model) {
-        String userEmail = authentication.getName();
-        User user = userService.findByEmail("swjwmam@gmail.com");
-        model.addAttribute("users", user);
-        return "signup"; // user/profile.html 템플릿을 렌더링합니다.
+        if (authentication != null && authentication.isAuthenticated()) {
+            String userEmail = authentication.getName();
+            User user = userService.findByEmail(userEmail);
+            model.addAttribute("user", user);
+            return "signup"; // user/profile.html 템플릿을 렌더링합니다.
+        } else {
+            // 인증되지 않은 상태에 대한 처리
+            return "login"; // 로그인 페이지로 리다이렉션
+        }
     }
 
 
