@@ -31,6 +31,8 @@ public class UserViewController {
     @GetMapping("sign-up")
     public String showUserProfile(Authentication authentication, Model model) {
         OAuth2User oAuth2User = (OAuth2User) authentication.getPrincipal();
+        if(oAuth2User != null)
+            return "login";
         String userEmail = (String) oAuth2User.getAttribute("email");
 
         // userEmail을 사용하여 사용자 정보를 가져옵니다.
