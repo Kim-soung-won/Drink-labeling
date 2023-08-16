@@ -3,18 +3,13 @@ package me.firstSpring.controller;
 import lombok.RequiredArgsConstructor;
 import me.firstSpring.config.jwt.TokenProvider;
 import me.firstSpring.domain.User;
-import me.firstSpring.dto.UserViewResponse;
 import me.firstSpring.service.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.oauth2.core.OAuth2AuthenticatedPrincipal;
 
-import java.security.Principal;
 
 @RequiredArgsConstructor
 @Controller
