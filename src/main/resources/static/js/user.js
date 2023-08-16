@@ -1,3 +1,23 @@
+const accessToken = localStorage.getItem('access_token');
+
+if(access_token){
+    fetch('/get-id',{
+        method: 'GET',
+        headers:{
+            'Authorization': `Bearer ${accessToken}`
+        }
+    })
+    .then(response => response.json())
+      .then(data => {
+        const id = data.id;
+        console.log('User ID:', id);
+      })
+      .catch(error => {
+        console.error('Error:', error);
+     });
+}
+
+
 const createButton = document.getElementById('create-btn');
 
 if (createButton) {

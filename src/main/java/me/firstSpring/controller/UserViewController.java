@@ -1,6 +1,7 @@
 package me.firstSpring.controller;
 
 import lombok.RequiredArgsConstructor;
+import me.firstSpring.config.jwt.TokenProvider;
 import me.firstSpring.domain.User;
 import me.firstSpring.dto.UserViewResponse;
 import me.firstSpring.service.UserService;
@@ -13,53 +14,45 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.oauth2.core.OAuth2AuthenticatedPrincipal;
 
+import java.security.Principal;
+
 @RequiredArgsConstructor
 @Controller
 public class UserViewController {
+
+    private final TokenProvider tokenProvider;
     private final UserService userService;
+
     @GetMapping("/login")
-    public String login(){
+    public String login() {
         return "oauthLogin";
     }
 
     @GetMapping("/signup")
-    public String signup(){
+    public String signup() {
         return "signup";
     }
 
     @GetMapping("/sign-up")
     //id 키를 가진 쿼리 파라미터의 값을 id변수에 매핑
-    public String newUser(Model model) {
-        int a=0;
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+    public String newUser(Model model, Principal principal) {
+        if (principal instanceof OAuth2AuthenticatedPrincipal) {
+            OAuth2AuthenticatedPrincipal oAuth2Principal = (OAuth2AuthenticatedPrincipal) principal;
+            String email = oAuth2Principal.getAttribute("email"); // Assuming email attribute exists in the principal
 
-        if (authentication != null && authentication.isAuthenticated()) {
-            Object principal = authentication.getPrincipal();
-            System.out.println("Principal Class: " + principal.getClass());
-            a=1;
+            User user = userService.findByEmail(email);
 
-            if (authentication.getPrincipal() instanceof OAuth2AuthenticatedPrincipal) {
-                OAuth2AuthenticatedPrincipal oauthPrincipal = (OAuth2AuthenticatedPrincipal) principal;
-                String userEmail = oauthPrincipal.getAttribute("email");
-                System.out.println("User Email: " + userEmail);
-                a=2;
-
-
-                User user = userService.findByEmail(userEmail);
-
-                if (user == null) { // 사용자 정보가 없으면 새로 생성
-                    model.addAttribute("users", new UserViewResponse());
-                }
-                else { // 사용자 정보가 있으면 수정
-                    model.addAttribute("users", new UserViewResponse(user));
-                }
+            if (user == null) { // 사용자 정보가 없으면 새로 생성
+                model.addAttribute("users", new UserViewResponse());
+            } else { // 사용자 정보가 있으면 수정
+                model.addAttribute("users", new UserViewResponse(user));
             }
+        } else {
+            // Handle case when the principal is not OAuth2AuthenticatedPrincipal
+            // For example, handle regular authentication
         }
-        if(a==0)
-            return "oauthLogin";
-        else if (a==1) {
-            return "login";
-        } else
-            return "article";
+        return"signup";
     }
+
+
 }

@@ -4,6 +4,7 @@ import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import me.firstSpring.domain.Article;
 import me.firstSpring.domain.User;
+import me.firstSpring.dto.AddArticleRequest;
 import me.firstSpring.dto.AddUserRequest;
 import me.firstSpring.dto.UpdateUserRequest;
 import me.firstSpring.repository.UserRepository;
@@ -18,11 +19,11 @@ import java.util.List;
 public class UserService {
     private final UserRepository userRepository;
 
-    public Long save(AddUserRequest dto){
+    public Long save(AddUserRequest request){
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
         return userRepository.save(User.builder()
-                .email(dto.getEmail())
-                .password(encoder.encode(dto.getPassword()))
+                .email(request.getEmail())
+                .password(encoder.encode(request.getPassword()))
                 .build()).getId();
     }
 
