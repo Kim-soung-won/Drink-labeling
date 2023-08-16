@@ -16,6 +16,7 @@
       <console name="Connection" type="STANDARD" schema="blog" session="Main"><![CDATA[use blog;
 select * from users
 select * from user
+select * from re_fresh_token
 create table user(
     id bigint not null AUTO_INCREMENT,
     email varchar(255) not null,
