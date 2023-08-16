@@ -1,5 +1,6 @@
 package me.firstSpring.controller;
 
+import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 import me.firstSpring.config.jwt.TokenProvider;
 import me.firstSpring.domain.User;
@@ -31,8 +32,9 @@ public class UserViewController {
     @GetMapping("sign-up")
     public String showUserProfile(Authentication authentication, Model model) {
         OAuth2User oAuth2User = (OAuth2User) authentication.getPrincipal();
-        if(oAuth2User != null)
-            return "login";
+        if(oAuth2User == null) {
+            return "redirect:/login";
+        }
         String userEmail = (String) oAuth2User.getAttribute("email");
 
         // userEmail을 사용하여 사용자 정보를 가져옵니다.
