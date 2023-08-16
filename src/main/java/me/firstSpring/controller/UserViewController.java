@@ -32,25 +32,12 @@ public class UserViewController {
     public String signup() {
         return "signup";
     }
-
-    @GetMapping("/sign-up")
-    //id 키를 가진 쿼리 파라미터의 값을 id변수에 매핑
-    public String newUser(Model model, Principal principal) {
-        if (principal instanceof OAuth2AuthenticatedPrincipal) {
-            OAuth2AuthenticatedPrincipal oAuth2Principal = (OAuth2AuthenticatedPrincipal) principal;
-            String email = oAuth2Principal.getAttribute("email"); // Assuming email attribute exists in the principal
-
-            User user = userService.findByEmail(email);
-
-            if (user == null) { // 사용자 정보가 없으면 새로 생성
-                model.addAttribute("users", new UserViewResponse());
-            } else { // 사용자 정보가 있으면 수정
-                model.addAttribute("users", new UserViewResponse(user));
-            }
-        } else {
-            return "login";
-        }
-        return"signup";
+    @GetMapping("sign-up")
+    public String showUserProfile(Authentication authentication, Model model) {
+        String userEmail = authentication.getName();
+        User user = userService.findByEmail(userEmail);
+        model.addAttribute("users", user);
+        return "signup"; // user/profile.html 템플릿을 렌더링합니다.
     }
 
 
