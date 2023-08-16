@@ -33,7 +33,7 @@ public class UserViewController {
             Long userId = tokenProvider.getUserId(tokenValue);
 
             User user = userService.findById(userId);
-            model.addAttribute("user", user);
+            model.addAttribute("users", user);
         }
         return "signup";
     }
