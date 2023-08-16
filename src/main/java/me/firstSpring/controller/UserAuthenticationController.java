@@ -16,7 +16,7 @@ public class UserAuthenticationController {
         this.userAuthenticationService = userAuthenticationService;
     }
 
-    @GetMapping("/profile")
+    @GetMapping("/login")
     public ResponseEntity<String> getProfile(@RequestHeader("Authorization") String authorizationHeader) {
         String token = extractToken(authorizationHeader);
         Authentication authentication = userAuthenticationService.getAuthenticationFromToken(token);
