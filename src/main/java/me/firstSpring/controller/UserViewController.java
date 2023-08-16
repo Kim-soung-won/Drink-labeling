@@ -30,15 +30,14 @@ public class UserViewController {
     }
     @GetMapping("sign-up")
     public String showUserProfile(Authentication authentication, Model model) {
-        if (authentication == null || !authentication.isAuthenticated()) {
-            return "redirect:/login"; // 로그인 페이지로 리다이렉션
-        }
         OAuth2User oAuth2User = (OAuth2User) authentication.getPrincipal();
-        User user = userService.findByEmail((String) oAuth2User.getAttributes().get("email"));
-        System.out.println(user);
-        model.addAttribute("users", user);
-        return "signup"; // user/profile.html 템플릿을 렌더링합니다.
-    }
+        String userEmail = (String) oAuth2User.getAttribute("email");
 
+        // userEmail을 사용하여 사용자 정보를 가져옵니다.
+        User user = userService.findByEmail(userEmail);
+
+        model.addAttribute("users", user); // user 객체를 모델에 추가하여 뷰로 전달
+        return "user/profile"; // user/profile.html 템플릿을 렌더링합니다.
+    }
 
 }
