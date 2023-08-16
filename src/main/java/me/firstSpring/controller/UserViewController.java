@@ -37,7 +37,7 @@ public class UserViewController {
         User user = userService.findByEmail(userEmail);
 
         model.addAttribute("users", user); // user 객체를 모델에 추가하여 뷰로 전달
-        return "user/profile"; // user/profile.html 템플릿을 렌더링합니다.
+        return "signup"; // user/profile.html 템플릿을 렌더링합니다.
     }
 
 }
