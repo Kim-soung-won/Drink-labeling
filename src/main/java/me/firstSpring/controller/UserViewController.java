@@ -48,8 +48,7 @@ public class UserViewController {
                 model.addAttribute("users", new UserViewResponse(user));
             }
         } else {
-            // Handle case when the principal is not OAuth2AuthenticatedPrincipal
-            // For example, handle regular authentication
+            return "login";
         }
         return"signup";
     }
