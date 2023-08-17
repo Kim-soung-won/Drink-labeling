@@ -46,6 +46,15 @@ public class UserApiController {
 
         return ResponseEntity.ok().body(updateUser);
     }
+
+    @GetMapping("/api/user")
+    public ResponseEntity<List<UserResponse>> findAllArticles(){
+        List<UserResponse> user = userService.findAll()//모든 게시물을 가져온 뒤 그 결과를 List<Article>형태로 반환한다.
+                .stream()//List<Article> 형태를 스트림으로 변환한다.
+                .map(UserResponse::new)//Article 객체를 새로운 ArticleResponse객채로 반환한다.
+                .toList();//map메소드로 새로운 스트림이 생성되었으니 이를 다시 리스트로 반환해 List<ArticleReponse>타입의 articles를 생성한다.
+        return ResponseEntity.ok().body(user);
+    }
 //    @PostMapping("/api/user")
 //    //@RequestBody로 요청 본문 값 매핑
 //    public ResponseEntity<User> addUser(@RequestBody AddUserRequest request,

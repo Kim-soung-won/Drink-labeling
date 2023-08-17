@@ -21,9 +21,12 @@ public class TokenService {
             throw new IllegalArgumentException("Unexpected token");
         }
 
+        //유효하면 리프레시 토큰으로 사용자 아이디를 찾음
+
         Long userId = refreshTokenService.findByRefreshToken(refreshToken).getUserId();
         User user = userService.findById(userId);
 
+        //새로운 액세스 토큰 발행 메서드
         return tokenProvider.generateToken(user, Duration.ofHours(2));
     }
 }

@@ -10,6 +10,7 @@ import me.firstSpring.dto.AddUserRequest;
 import me.firstSpring.dto.UpdateUserRequest;
 import me.firstSpring.repository.UserRepository;
 import org.apache.tomcat.util.net.openssl.ciphers.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -41,10 +42,19 @@ public class UserService {
     public User update(long id, UpdateUserRequest request){
         User user = userRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("not found: " + id));
-
-        user.update_data(request.getNickName());
-
         return user;
+    }
+
+    public List<User> findAll(){
+        return userRepository.findAll();
+    } //모든 글 목록 리스트로 조회
+
+
+    private static void authorizeLoginUser(Article article){
+        String userName = SecurityContextHolder.getContext().getAuthentication().getName();
+        if(!article.getAuthor().equals(userName)){
+            throw new IllegalArgumentException("not authorized");
+        }
     }
 
 

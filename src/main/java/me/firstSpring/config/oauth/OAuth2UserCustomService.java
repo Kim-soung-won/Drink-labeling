@@ -28,6 +28,7 @@ public class OAuth2UserCustomService extends DefaultOAuth2UserService {
         return user;
     }
 
+    //유저 정보를 저장하는 메서드
     private User saveOrUpdate(OAuth2User oAuth2User){
         Map<String, Object> attributes = oAuth2User.getAttributes();
         String email = (String) attributes.get("email");

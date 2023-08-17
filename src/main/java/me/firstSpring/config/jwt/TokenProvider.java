@@ -17,7 +17,7 @@ import java.util.Set;
 @Service
 public class TokenProvider {
     private final JwtProperties jwtProperties;
-    public String generateToken(User user, Duration expiredAt){
+    public String generateToken(User user, Duration expiredAt){ //유저, 기간
         Date now = new Date();
         return makeToken(new Date(now.getTime() + expiredAt.toMillis()),user);
     }

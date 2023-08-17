@@ -3,18 +3,21 @@ package me.firstSpring.controller;
 import lombok.RequiredArgsConstructor;
 import me.firstSpring.config.jwt.TokenProvider;
 import me.firstSpring.domain.User;
+import me.firstSpring.dto.ArticleListViewResponse;
+import me.firstSpring.dto.UserListViewResponse;
 import me.firstSpring.service.UserService;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import java.util.List;
+
 @RequiredArgsConstructor
 @Controller
 public class UserViewController {
 
     private UserService userService;
-    private TokenProvider tokenProvider;
     @GetMapping("/login")
     public String login() {
         return "oauthLogin";
@@ -25,16 +28,15 @@ public class UserViewController {
         return "signup";
     }
 
-    @GetMapping("/sign-up")
-    public String newUsers(Authentication authentication, Model model){
-        if (authentication != null && authentication.isAuthenticated()) {
-            String tokenValue = (String) authentication.getCredentials();
+    @GetMapping("/user")
+    public String getUser(Model model){ //Model : HTML쪽으로 값을 넘겨주는 객체
+        List<UserListViewResponse> articles = userService.findAll().stream()
+                .map(UserListViewResponse::new)
+                .toList();
+        model.addAttribute("user",articles);
 
-            Long userId = tokenProvider.getUserId(tokenValue);
-
-            User user = userService.findById(userId);
-            model.addAttribute("users", user);
-        }
-        return "signup";
+        return "user";
     }
+
+
 }

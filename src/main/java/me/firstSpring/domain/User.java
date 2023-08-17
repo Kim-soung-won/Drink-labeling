@@ -81,7 +81,4 @@ public class User implements UserDetails{
         return this;
     }
 
-    public void update_data(String nickName){
-        this.nickname=nickname;
-    }
 }

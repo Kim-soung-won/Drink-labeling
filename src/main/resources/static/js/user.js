@@ -21,7 +21,6 @@ if(access_token){
 const createButton = document.getElementById('create-btn');
 
 if (createButton) {
-    // 등록 버튼을 클릭하면 /api/articles로 요청을 보낸다
     createButton.addEventListener('click', event => {
         body = JSON.stringify({
             nickname: document.getElementById('nickname').value,
