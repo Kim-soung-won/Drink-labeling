@@ -1,15 +1,13 @@
-package me.firstSpring.dto;
+package me.firstSpring.dto.Article;
 
 import lombok.Getter;
 import me.firstSpring.domain.Article;
 
 @Getter
-public class ArticleListViewResponse {
-    private final Long id;
+public class ArticleResponse {
     private final String title;
     private final String content;
-    public ArticleListViewResponse(Article article){
-        this.id = article.getId();
+    public ArticleResponse(Article article){
         this.title = article.getTitle();
         this.content = article.getContent();
     }

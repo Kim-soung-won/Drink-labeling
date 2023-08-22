@@ -2,9 +2,9 @@ package me.firstSpring.controller;
 
 import lombok.RequiredArgsConstructor;
 import me.firstSpring.domain.Article;
-import me.firstSpring.dto.AddArticleRequest;
-import me.firstSpring.dto.ArticleResponse;
-import me.firstSpring.dto.UpdateArticleRequest;
+import me.firstSpring.dto.Article.AddArticleRequest;
+import me.firstSpring.dto.Article.ArticleResponse;
+import me.firstSpring.dto.Article.UpdateArticleRequest;
 import me.firstSpring.service.BlogService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -44,6 +44,7 @@ public class BlogApiController {
         return ResponseEntity.ok()
                 .body(new ArticleResponse(article));
     }
+
 
     @DeleteMapping("/api/articles/{id}")
     public ResponseEntity<Void> deleteArticle(@PathVariable long id){

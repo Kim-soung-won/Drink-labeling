@@ -34,12 +34,6 @@ public class Inform {
     @Column(name = "tall")
     private Long tall;
 
-    @Column(name = "userId",nullable = false,unique = true)
-    private Long userId;
-
-    public Inform(Long userId){
-        this.userId = userId;
-    }
 
     @Builder
     public Inform(Long age, String name, String comment, Long weight, Long tall) {

@@ -3,8 +3,8 @@ package me.firstSpring.service;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import me.firstSpring.domain.Article;
-import me.firstSpring.dto.AddArticleRequest;
-import me.firstSpring.dto.UpdateArticleRequest;
+import me.firstSpring.dto.Article.AddArticleRequest;
+import me.firstSpring.dto.Article.UpdateArticleRequest;
 import me.firstSpring.repository.BlogRepository;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
@@ -55,9 +55,9 @@ public class BlogService {
     //userName이 같은지 확인
     private static void authorizeArticleAuthor(Article article){
         String userName = SecurityContextHolder.getContext().getAuthentication().getName();
+        System.out.println(userName);
         if(!article.getAuthor().equals(userName)){
             throw new IllegalArgumentException("not authorized");
         }
     }
-
 }

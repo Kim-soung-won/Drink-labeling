@@ -1,4 +1,4 @@
-package me.firstSpring.dto;
+package me.firstSpring.dto.Article;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;

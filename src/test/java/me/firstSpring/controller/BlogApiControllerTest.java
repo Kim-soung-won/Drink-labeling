@@ -2,8 +2,8 @@ package me.firstSpring.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import me.firstSpring.domain.Article;
-import me.firstSpring.dto.AddArticleRequest;
-import me.firstSpring.dto.UpdateArticleRequest;
+import me.firstSpring.dto.Article.AddArticleRequest;
+import me.firstSpring.dto.Article.UpdateArticleRequest;
 import me.firstSpring.repository.BlogRepository;
 import me.firstSpring.domain.User;
 import me.firstSpring.repository.UserRepository;

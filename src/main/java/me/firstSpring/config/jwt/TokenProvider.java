@@ -59,6 +59,11 @@ public class TokenProvider {
         Claims claims = getClaims(token);
         return claims.get("id",Long.class);
     }
+
+    public String extractUsername(String token) {
+        Claims claims = getClaims(token);
+        return claims.getSubject();
+    }
     private Claims getClaims(String token){
         return Jwts.parser() //클레임 조회
                 .setSigningKey(jwtProperties.getSecretKey())

@@ -68,6 +68,26 @@ if (createButton) {
     });
 }
 
+const user_id = localStorage.getItem("user_email")
+const ddButton = document.getElementById('dd-btn');
+
+if (ddButton) {
+    ddButton.addEventListener('click', event => {
+        function success() {
+            alert('등록 완료되었습니다.');
+            location.replace(`/user/${user_id}`);
+        };
+        function fail() {
+            alert('등록 실패했습니다.');
+            location.replace(`/user/${user_id}`);
+        };
+
+        httpRequest('GET','/user', null, success, fail)
+    });
+}
+
+
+
 
 // key 즉 자신이 가진 쿠키를 가져오는 함수
 function getCookie(key) {

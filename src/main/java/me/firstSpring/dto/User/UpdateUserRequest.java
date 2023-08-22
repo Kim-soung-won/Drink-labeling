@@ -1,4 +1,4 @@
-package me.firstSpring.dto;
+package me.firstSpring.dto.User;
 
 
 import lombok.AllArgsConstructor;

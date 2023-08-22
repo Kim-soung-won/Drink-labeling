@@ -44,7 +44,8 @@ public class OAuth2SuccessHandler extends SimpleUrlAuthenticationSuccessHandler 
 
         //액세스 토큰 생성 -> 패스에 액세스 토큰 추가
         String accessToken = tokenProvider.generateToken(user, ACCESS_TOKEN_DURATION);
-        String targetUrl = getTargetUrl(accessToken);
+        Long id = user.getId();
+        String targetUrl = getTargetUrl(accessToken,id);
 
         //인증 관련 설정 값, 쿠키 제거
         clearAuthenticationAttributes(request,response);
@@ -77,9 +78,10 @@ public class OAuth2SuccessHandler extends SimpleUrlAuthenticationSuccessHandler 
     }
 
     //액세스 토큰을 패스에 추가
-    private String getTargetUrl(String token){
+    private String getTargetUrl(String token, Long id){
         return UriComponentsBuilder.fromUriString(REDIRECT_PATH)
                 .queryParam("token",token)
+                .queryParam("id",id)
                 .build()
                 .toUriString();
     }

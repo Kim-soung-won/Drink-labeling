@@ -2,8 +2,8 @@ package me.firstSpring.controller;
 
 import lombok.RequiredArgsConstructor;
 import me.firstSpring.domain.Article;
-import me.firstSpring.dto.ArticleListViewResponse;
-import me.firstSpring.dto.ArticleViewResponse;
+import me.firstSpring.dto.Article.ArticleListViewResponse;
+import me.firstSpring.dto.Article.ArticleViewResponse;
 import me.firstSpring.service.BlogService;
 import org.springframework.ui.Model;
 import org.springframework.stereotype.Controller;
@@ -31,7 +31,6 @@ public class BlogViewController {
     public String getArticle(@PathVariable Long id, Model model){
         Article article = blogService.findById(id);
         model.addAttribute("article",new ArticleViewResponse(article));
-
         return "article";
     }
 
