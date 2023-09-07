@@ -9,6 +9,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import java.time.LocalDateTime;
 import java.util.Collection;
 import java.util.List;
 
@@ -32,11 +33,24 @@ public class User implements UserDetails{
     @Column(name = "nickname", unique = true)
     private String nickname;
 
+    @Column(name ="age")
+    private Long age;
+
+    @Column(name = "weight")
+    private Long weight;
+
+    @Column(name = "tall")
+    private Long tall;
+
+
     @Builder
-    public User(String email, String password, String nickname){
+    public User(String email, String password, String nickname, Long age, Long weight, Long tall){
         this.email = email;
         this.password = password;
         this.nickname = nickname;
+        this.age = age;
+        this.weight = weight;
+        this.tall = tall;
     }
 
     @Override // 권한부여 메소드 오버라이딩
@@ -79,6 +93,12 @@ public class User implements UserDetails{
     public User update(String nickname){
         this.nickname = nickname;
         return this;
+    }
+
+    public void update_data(Long age, Long weight, Long tall) {
+        this.age = age;
+        this.weight = weight;
+        this.tall = tall;
     }
 
 }

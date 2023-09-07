@@ -52,18 +52,14 @@ public class UserViewController {
     @GetMapping("/user")
     public String getUsers(Principal principal, Model model){
         User user = userService.findByEmail(principal.getName());
-        System.out.println(user);
         model.addAttribute("user",new UserViewResponse(user));
-        System.out.println(model);
 
         return "user";
     }
     @GetMapping("/user/{id}")
     public String getUserid(@PathVariable Long id, Model model){
         User user = userService.findById(id);
-        System.out.println(user);
         model.addAttribute("user",new UserViewResponse(user));
-        System.out.println(model);
 
         return "user";
     }

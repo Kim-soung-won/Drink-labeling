@@ -9,5 +9,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Getter
 public class UpdateUserRequest {
-    private String nickName;
+    private Long age;
+    private Long weight;
+    private Long tall;
 }

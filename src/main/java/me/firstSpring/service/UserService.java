@@ -2,19 +2,13 @@ package me.firstSpring.service;
 
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
-import me.firstSpring.domain.Article;
 import me.firstSpring.domain.User;
-import me.firstSpring.dto.Article.UpdateArticleRequest;
 import me.firstSpring.dto.User.AddUserRequest;
 import me.firstSpring.dto.User.UpdateUserRequest;
 import me.firstSpring.repository.UserRepository;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDateTime;
-import java.util.List;
 
 @RequiredArgsConstructor
 @Service
@@ -33,10 +27,6 @@ public class UserService {
         return userRepository.findById(userId)
                 .orElseThrow(() -> new IllegalArgumentException("Unexpected user"));
     }
-    public User findByUsername(String username) {
-        return userRepository.findByEmail(username)
-                .orElseThrow(() -> new UsernameNotFoundException("User not found: " + username));
-    }
     public User findByEmail(String email) {
         return userRepository.findByEmail(email)
                 .orElseThrow(() -> new IllegalArgumentException("Unexpected user"));
@@ -46,6 +36,7 @@ public class UserService {
     public User update(long id, UpdateUserRequest request){
         User user = userRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("not found: " + id));
+        user.update_data(request.getAge(),request.getWeight(),request.getTall());
         return user;
     }
 }

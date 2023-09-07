@@ -54,7 +54,7 @@ public class BlogApiController {
     }
 
     @PutMapping("/api/articles/{id}")
-    public ResponseEntity<Article> updateAricle(@PathVariable long id,
+    public ResponseEntity<Article> updateArticle(@PathVariable long id,
                                                 @RequestBody UpdateArticleRequest request){
         Article updateArticle = blogService.update(id,request);
 

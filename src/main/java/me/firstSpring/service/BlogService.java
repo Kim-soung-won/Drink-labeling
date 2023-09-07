@@ -55,7 +55,6 @@ public class BlogService {
     //userName이 같은지 확인
     private static void authorizeArticleAuthor(Article article){
         String userName = SecurityContextHolder.getContext().getAuthentication().getName();
-        System.out.println(userName);
         if(!article.getAuthor().equals(userName)){
             throw new IllegalArgumentException("not authorized");
         }

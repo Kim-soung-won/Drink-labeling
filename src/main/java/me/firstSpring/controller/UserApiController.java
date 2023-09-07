@@ -39,7 +39,7 @@ public class UserApiController {
                 SecurityContextHolder.getContext().getAuthentication());
         return "redirect:/oauthLogin";
     }
-    @PutMapping("/api/signup/{id}")
+    @PutMapping("/api/user/{id}")
     public ResponseEntity<User> updateUser(@PathVariable long id,
                                                 @RequestBody UpdateUserRequest request){
         User updateUser = userService.update(id,request);

@@ -1,8 +1,11 @@
 package me.firstSpring.service;
 
+import com.nimbusds.oauth2.sdk.token.RefreshToken;
 import lombok.RequiredArgsConstructor;
 import me.firstSpring.config.jwt.TokenProvider;
+import me.firstSpring.domain.ReFreshToken;
 import me.firstSpring.domain.User;
+import me.firstSpring.repository.RefreshTokenRepository;
 import org.springframework.stereotype.Service;
 
 import java.time.Duration;
