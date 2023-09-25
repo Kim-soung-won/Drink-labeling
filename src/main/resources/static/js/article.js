@@ -68,7 +68,7 @@ if (createButton) {
     });
 }
 
-const user_id = localStorage.getItem("user_email")
+const user_id = localStorage.getItem("access_token")
 const ddButton = document.getElementById('dd-btn');
 
 if (ddButton) {

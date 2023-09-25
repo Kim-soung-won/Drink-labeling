@@ -24,7 +24,7 @@ import java.util.List;
 @Controller
 public class UserApiController {
     private final UserService userService;
-
+    private final TokenProvider tokenProvider;
 
 
     @PostMapping("/login")
@@ -40,9 +40,10 @@ public class UserApiController {
         return "redirect:/oauthLogin";
     }
     @PutMapping("/api/user/{id}")
-    public ResponseEntity<User> updateUser(@PathVariable long id,
+    public ResponseEntity<User> updateUser(@PathVariable String id,
                                                 @RequestBody UpdateUserRequest request){
-        User updateUser = userService.update(id,request);
+        Long aa = tokenProvider.getUserId(id);
+        User updateUser = userService.update(aa,request);
 
         return ResponseEntity.ok().body(updateUser);
     }

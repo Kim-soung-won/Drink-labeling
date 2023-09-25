@@ -4,7 +4,7 @@ const mdButton = document.getElementById('md-btn');
 if (mdButton) {
     mdButton.addEventListener('click', event => {
         alert('수정');
-        let id = localStorage.getItem("user_email")
+        let id = localStorage.getItem("access_token")
         console.log(id);
 
         body = JSON.stringify({

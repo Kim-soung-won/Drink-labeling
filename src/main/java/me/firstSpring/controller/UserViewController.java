@@ -16,12 +16,15 @@ import me.firstSpring.dto.User.UserViewResponse;
 import me.firstSpring.service.BlogService;
 import me.firstSpring.service.UserDetailService;
 import me.firstSpring.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.oauth2.core.user.OAuth2User;
+import org.springframework.security.oauth2.jwt.Jwt;
+import org.springframework.security.oauth2.jwt.JwtDecoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -37,6 +40,8 @@ public class UserViewController {
     private final UserService userService;
 
     public UserApiController userApiController;
+
+    private final TokenProvider tokenProvider;
 
 
     @GetMapping("/login")
@@ -56,9 +61,19 @@ public class UserViewController {
 
         return "user";
     }
+//    @GetMapping("/user/{id}")
+//    public String getUserid(@PathVariable Long id, Model model){
+//        User user = userService.findById(id);
+//        System.out.println(user.getAge());
+//        model.addAttribute("user",new UserViewResponse(user));
+//
+//        return "user";
+//    }
     @GetMapping("/user/{id}")
-    public String getUserid(@PathVariable Long id, Model model){
-        User user = userService.findById(id);
+    public String getUserid(@PathVariable String id, Model model){
+        Long aa = tokenProvider.getUserId(id);
+        User user = userService.findById(aa);
+        System.out.println(user.getAge());
         model.addAttribute("user",new UserViewResponse(user));
 
         return "user";
