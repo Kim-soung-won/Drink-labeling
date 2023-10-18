@@ -85,6 +85,22 @@ if (ddButton) {
         httpRequest('GET','/user', null, success, fail)
     });
 }
+const dataButton = document.getElementById('data-btn');
+
+if (ddButton) {
+    dataButton.addEventListener('click', event => {
+        function success() {
+            alert('등록 완료되었습니다.');
+            location.replace(`/user/${user_id}`);
+        };
+        function fail() {
+            alert('등록 실패했습니다.');
+            location.replace(`/user/${user_id}`);
+        };
+
+        httpRequest('GET','/user', null, success, fail)
+    });
+}
 
 
 

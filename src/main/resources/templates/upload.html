@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Image Model</title>
+</head>
+<body>
+<div>Teachable Machine Image Model</div>
+<button type="button" onclick="init()">Start</button>
+<button type="button" id="data-btn">show data</button>
+<div class="image-show" id="image-show"></div>
+<input type="file" id="img" accept="image/*" onchange="loadFile(this)">
+<img id="show-img">
+<h1 id="result"></h1>
+<div id="webcam-container"></div>
+<div id="label-container"></div>
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@latest/dist/teachablemachine-image.min.js"></script>
+<script src="/js/upload.js"></script>
+<script src="/js/article.js"></script>
+</body>
+</html>
