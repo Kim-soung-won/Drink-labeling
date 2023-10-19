@@ -13,7 +13,7 @@ function loadFile(input) {
 
     newImage = document.getElementById('show-img')
 
-    newImage.src = URL.createObjectURL(file);
+    newImage.src = modelPATH.createObjectURL(file);
 
     newImage.style.width = "300px";
     newImage.style.height = "300px";
@@ -23,17 +23,16 @@ function loadFile(input) {
     container.appendChild(newImage);
 
     const img = document.getElementById('show-img');
-        console.log(tmImage);
-        tmImage.load(modelURL, metadataURL).then(model => {
-            function run(){
-                model.predict(img).then(predictions => {
-                    console.log('Predictions: ', predictions);
-                    predictions.sort((a, b) => (b.probability - a.probability)); //내림차순으로 정렬 오름차순이면 a-b
-                    result.innerHTML = predictions[0].className + ' ' + parseInt(predictions[0].probability * 100) + '%';
-                });
-            }
-            img.onload = function () {
-                                run();
-            };
-        });
+    tmImage.load(modelURL, metadataURL).then(model => {
+        function run(){
+            model.predict(img).then(predictions => {
+                console.log('Predictions: ', predictions);
+                predictions.sort((a, b) => (b.probability - a.probability)); //내림차순으로 정렬 오름차순이면 a-b
+                result.innerHTML = predictions[0].className + ' ' + parseInt(predictions[0].probability * 100) + '%';
+            });
+        }
+        img.onload = function () {
+             run();
+        };
+    });
 };
