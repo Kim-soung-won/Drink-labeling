@@ -33,6 +33,12 @@ public class BlogViewController {
         model.addAttribute("article",new ArticleViewResponse(article));
         return "article";
     }
+    @GetMapping("/upload/{name}")
+    public String getContent(@PathVariable String name, Model model){
+        Article article = blogService.findByTitle(name);
+        model.addAttribute("data", new ArticleViewResponse(article));
+        return "data";
+    }
 
     @GetMapping("/new-article")
     //id 키를 가진 쿼리 파라미터의 값을 id변수에 매핑

@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="kr">
+<html lang="kr" xmlns:text-align="http://www.w3.org/1999/xhtml">
 
 <head>
     <meta charset="utf-8">
@@ -15,13 +15,14 @@
             <p id="status">모델을 로딩중입니다.</p>
             <div class="spinner-border text-primary" id="loader">
             </div>
-            <div class="card">
-                <img id="img"></img>
+            <div class="card" text-align: center;>
                 <div class="card-body">
+                    <img id="img" width="300px" height="300px">
                     <h1 id="result"></h1>
                     <input class="btn btn-outline-secondary" id="input" type="file" name="file" />
                 </div>
             </div>
+            <button id="show-data">더보기</button>
         </div>
     </div>
 </div>

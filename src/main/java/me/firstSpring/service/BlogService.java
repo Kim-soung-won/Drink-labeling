@@ -32,6 +32,10 @@ public class BlogService {
                 orElseThrow(() -> new IllegalArgumentException("not found: " + id));
                 //예외 발생시 not found id 라는 메세지를 출력해줌
     }
+    public Article findByTitle(String name){
+        return blogRepository.findByTitle(name).
+                orElseThrow(() -> new IllegalArgumentException("not found: " + name));
+    }
 
     public void delete(long id){ //글 삭제
         Article article = blogRepository.findById(id)
