@@ -33,11 +33,9 @@ const showButton = document.getElementById('show-data');
 if (showButton) {
     showButton.addEventListener('click', event => {
         function success() {
-            alert('등록 완료되었습니다.');
             location.replace(`/upload/${name}`);
         };
         function fail() {
-            alert('등록 실패했습니다.');
             location.replace(`/upload/${name}`);
         };
 
