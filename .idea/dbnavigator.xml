@@ -15,7 +15,6 @@
     <connection id="63daf406-ba8b-4696-8750-b15b89d268b9">
       <console name="Connection" type="STANDARD" schema="blog" session="Main"><![CDATA[use blog;
 select * from users
-select * from re_fresh_token
 
 
 create table users(
@@ -28,14 +27,15 @@ create table users(
     tall int,
     primary key (id)
 )
-
-create table Inform(
+create table drink(
     id bigint not null AUTO_INCREMENT,
-    age int not null,
-    name varchar(255) not null,
-    comment varchar(255),
-    weight int not null,
-    tall int not null,
+    name varchar(20) not null,
+    cal float not null,
+    car float not null,
+    pro float not null,
+    fat float not null,
+    gro varchar(20),
+    other varchar(255),
     primary key (id)
 );
 

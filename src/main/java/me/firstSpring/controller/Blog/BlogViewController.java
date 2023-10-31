@@ -1,4 +1,4 @@
-package me.firstSpring.controller;
+package me.firstSpring.controller.Blog;
 
 import lombok.RequiredArgsConstructor;
 import me.firstSpring.domain.Article;

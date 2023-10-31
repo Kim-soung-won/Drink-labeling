@@ -1,4 +1,4 @@
-package me.firstSpring.controller;
+package me.firstSpring.controller.User;
 
 import lombok.RequiredArgsConstructor;
 import me.firstSpring.dto.CreateAccessTokenRequest;

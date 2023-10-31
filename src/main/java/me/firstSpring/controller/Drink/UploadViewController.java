@@ -1,4 +1,4 @@
-package me.firstSpring.controller;
+package me.firstSpring.controller.Drink;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
