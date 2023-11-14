@@ -16,7 +16,7 @@ public class DrinkViewResponse {
     private float car;
     private float pro;
     private float fat;
-    private String group;
+    private String gro;
     private String other;
 
     public DrinkViewResponse(Drink drink){
@@ -26,7 +26,7 @@ public class DrinkViewResponse {
         this.car = drink.getCar();
         this.pro = drink.getPro();
         this.fat = drink.getFat();
-        this.group = drink.getGroup();
+        this.gro = drink.getGro();
         this.other = drink.getOther();
     }
 }
