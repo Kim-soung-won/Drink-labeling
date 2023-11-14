@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script type="module">import * as tf from 'https://cdn.jsdelivr.net/npm/@tensorflow/tfjs';</script>
+  <title>Guess Pojemon</title>
+  <style>
+        #btn-capture {
+            text-align: center;
+            display: inline-block;
+            padding: 1rem;
+            margin-top: 1rem;
+            border-radius: 1rem;
+            font-size: 1.5rem;
+            background-color: blanchedalmond;
+            transition: .2s;
+        }
+        #btn-capture:hover {
+            cursor: pointer;
+            margin-top: 0.5rem;
+            box-shadow: rgba(182, 162, 133, 0.5) 0 5px 10px 2px;
+        }
+    </style>
+</head>
+<body>
+
+<div style="text-align: center; font-size: 3rem;">Guess Which looks like</div>
+<div style="display: flex; width: 100%; justify-content: center; align-items: center;">
+  <div class="card-body">
+    <img id="img" width="300px" height="300px">
+    <h1 id="result"></h1>
+    <input class="btn btn-outline-secondary" id="input" type="file" name="file" />
+  </div>
+</div>
+<div style="display: flex; width: 100%; height:6rem; justify-content: center; align-items: center; flex-direction: column;">
+  <div id="btn-capture">
+    GOTCHA!
+  </div>
+</div>
+<div style="display: grid;grid-template-columns:1fr 1fr">
+  <canvas id="canvas" class="d-none"></canvas>
+  <image id="result" src=""></image>
+</div>
+
+</body>
+
+<script type = "module" src="/js/Exupload.js"></script>
+</html>
