@@ -15,7 +15,7 @@ img.onload = async () => {
         let drinkImage = tf.browser.fromPixels(img);
 
         // 이미지 크기를 모델이 기대하는 크기로 조정
-        drinkImage = tf.image.resizeBilinear(drinkImage, [150, 150]);
+        drinkImage = tf.image.resizeBilinear(drinkImage, [300, 300]);
 
         // 배치 차원 추가
         drinkImage = tf.expandDims(drinkImage, 0);
