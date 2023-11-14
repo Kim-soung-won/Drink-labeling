@@ -13,7 +13,16 @@ public class UploadViewController {
         return "Main_page";
     }
     @GetMapping("/코카콜라")
-    public String getCokaPage(){
+    public String getCokePage(){
+        return "Coke_page";
+    }
+
+    @GetMapping("/펩시")
+    public String getPepsiPage(){
+        return "Coke_page";
+    }
+    @GetMapping("/사이다")
+    public String getSodaPage(){
         return "Coke_page";
     }
 }
