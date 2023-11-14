@@ -10,6 +10,10 @@ public class UploadViewController {
     @GetMapping("/upload")
     public String getUploadPage(){
 
-        return "upload";
+        return "Main_page";
+    }
+    @GetMapping("/코카콜라")
+    public String getCokaPage(){
+        return "Coke_page";
     }
 }
