@@ -1,43 +1,27 @@
-const cokeCard = document.getElementById('cokeCard');
-const pepsiCard = document.getElementById('pepsiCard');
-const sodaCard = document.getElementById('sodaCard');
+var IMP = window.IMP;
+IMP.init('imp76806111') // 예: 'imp00000000a'
 
-if(cokeCard){
-          cokeCard.addEventListener('click', event => {
-              function success() {
-                  location.replace(`/코카콜라`);
-              };
-              function fail() {
-                  location.replace(`/코카콜라`);
-              };
-
-              httpRequest('GET',`/코카콜라`, null, success, fail)
-          });
+function requestPay() {
+    IMP.request_pay({
+      pg: "kcp.{상점ID}",
+      pay_method: "card",
+      merchant_uid: "13411-01311011",   // 주문번호
+      name: "전재산 납부되셨습니다.",
+      amount: 195000,                         // 숫자 타입
+      buyer_email: "dldbsghks8@gmail.com",
+      buyer_name: "",
+      buyer_tel: "010-4242-4242",
+      buyer_addr: "서울특별시 강남구 신사동",
+      buyer_postcode: "01181"
+    }, function (rsp) { // callback
+      if (rsp.success) {
+              console.log(rsp);
+          } else {
+              console.log(rsp);
+      }
+    });
 }
-if(pepsiCard){
-          pepsiCard.addEventListener('click', event => {
-              function success() {
-                  location.replace(`/펩시`);
-              };
-              function fail() {
-                  location.replace(`/펩시`);
-              };
 
-              httpRequest('GET',`/펩시`, null, success, fail)
-          });
-}
-if(sodaCard){
-          sodaCard.addEventListener('click', event => {
-              function success() {
-                  location.replace(`/사이다`);
-              };
-              function fail() {
-                  location.replace(`/사이다`);
-              };
-
-              httpRequest('GET',`/사이다`, null, success, fail)
-          });
-}
 function httpRequest(method, url, body, success, fail) {
     fetch(url, {
         method: method,

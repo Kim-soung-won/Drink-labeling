@@ -25,4 +25,12 @@ public class UploadViewController {
     public String getSodaPage(){
         return "Coke_page";
     }
+    @GetMapping("/가격")
+    public String getPricePage(){
+        return "Coke_price_page";
+    }
+    @GetMapping("/order")
+    public String getOrderPage(){
+        return "testPayment";
+    }
 }

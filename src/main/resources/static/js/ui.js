@@ -1,6 +1,7 @@
 const cokeCard = document.getElementById('cokeCard');
 const pepsiCard = document.getElementById('pepsiCard');
 const sodaCard = document.getElementById('sodaCard');
+
 if(cokeCard){
           cokeCard.addEventListener('click', event => {
               function success() {
