@@ -56,7 +56,7 @@ public class WebOAuthSecurityConfig {
         // 토큰 재발급 URL은 인증 없이 접근 가능하도록 설정
         http.authorizeHttpRequests() //Http요청에 대한 보안 구성 시작
                 .requestMatchers("/api/token").permitAll() //해당 경로에 대해서는 인증없이 허용
-                .requestMatchers("/api/**").authenticated() //해당 경로에 대해서는 모든 경로에 대해 인증 필요
+//                .requestMatchers("/api/**").authenticated() //해당 경로에 대해서는 모든 경로에 대해 인증 필요
                 .anyRequest().permitAll(); //나머지 모든 요청 인증 허용
 
         http.oauth2Login()

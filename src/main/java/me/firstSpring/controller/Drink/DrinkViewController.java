@@ -2,7 +2,6 @@ package me.firstSpring.controller.Drink;
 
 import lombok.RequiredArgsConstructor;
 import me.firstSpring.domain.Drink;
-import me.firstSpring.dto.Article.ArticleViewResponse;
 import me.firstSpring.dto.Drink.DrinkListViewResponse;
 import me.firstSpring.dto.Drink.DrinkViewResponse;
 import me.firstSpring.service.DrinkService;
@@ -19,7 +18,7 @@ import java.util.List;
 public class DrinkViewController {
     private final DrinkService drinkService;
 
-    @GetMapping("/drink")
+    @GetMapping("/drinkList")
     public String getDrink(Model model){ //Model : HTML쪽으로 값을 넘겨주는 객체
         List<DrinkListViewResponse> drinks = drinkService.findAll().stream()
                 .map(DrinkListViewResponse::new)
@@ -29,7 +28,7 @@ public class DrinkViewController {
         return "drinkList";
     }
     @GetMapping("/drink/{id}")
-    public String getArticle(@PathVariable Long id, Model model){
+    public String getDrink(@PathVariable Long id, Model model){
         Drink drink = drinkService.findById(id);
         model.addAttribute("drink",new DrinkViewResponse(drink));
         return "drink";
@@ -40,16 +39,22 @@ public class DrinkViewController {
         model.addAttribute("data", new DrinkViewResponse(drink));
         return "data";
     }
+    @GetMapping("/update/{name}")
+    public String getDataPage(@PathVariable String name, Model model){
+        Drink drink = drinkService.findByName(name);
+        model.addAttribute("drink", new DrinkViewResponse(drink));
+        return "drinkData";
+    }
 
     @GetMapping("/new-drink")
     //id 키를 가진 쿼리 파라미터의 값을 id변수에 매핑
-    public String newArticle(@RequestParam(required = false) Long id, Model model){
-        if(id == null){ //id가 없으면 생성
-            model.addAttribute("drink", new ArticleViewResponse());
+    public String newDrink(@RequestParam(required = false) String name, Model model){
+        if(name == null){ //id가 없으면 생성
+            model.addAttribute("drink", new DrinkViewResponse());
         } else{ //있으면 수정
-            Drink drink = drinkService.findById(id);
+            Drink drink = drinkService.findByName(name);
             model.addAttribute("drink", new DrinkViewResponse(drink));
         }
-        return "newdrink";
+        return "newDrink";
     }
 }

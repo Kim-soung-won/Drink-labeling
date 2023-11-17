@@ -30,14 +30,20 @@ public class Drink {
     @Column(name = "fat", nullable = false)
     private float fat;
 
-    @Column(name = "group", nullable = true)
+    @Column(name = "gro", nullable = true)
     private String gro;
 
     @Column(name = "other", nullable = true)
     private String other;
 
+    @Column(name = "cafe", nullable = true)
+    private float cafe;
+
+    @Column(name = "na", nullable = true)
+    private float na;
+
     @Builder
-    public Drink(String name, float cal, float car, float pro, float fat, String gro, String other) {
+    public Drink(String name, float cal, float car, float pro, float fat, String gro, String other, float cafe,float na) {
         this.name = name;
         this.cal = cal;
         this.car = car;
@@ -45,6 +51,8 @@ public class Drink {
         this.fat = fat;
         this.gro = gro;
         this.other = other;
+        this.cafe = cafe;
+        this.na=na;
     }
     public void update(String other) {
         this.other = other;

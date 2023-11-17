@@ -3,7 +3,6 @@ package me.firstSpring.service;
 import lombok.RequiredArgsConstructor;
 import me.firstSpring.domain.Inform;
 import me.firstSpring.dto.Inform.AddInformRequest;
-import me.firstSpring.repository.BlogRepository;
 import me.firstSpring.repository.UserInformRepository;
 import org.springframework.stereotype.Service;
 

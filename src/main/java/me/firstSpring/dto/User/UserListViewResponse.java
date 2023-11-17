@@ -2,10 +2,7 @@ package me.firstSpring.dto.User;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import me.firstSpring.domain.Article;
 import me.firstSpring.domain.User;
-
-import java.time.LocalDateTime;
 
 @NoArgsConstructor
 @Getter

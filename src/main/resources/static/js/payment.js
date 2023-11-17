@@ -5,15 +5,16 @@ function requestPay() {
     IMP.request_pay({
       pg: "kcp.{상점ID}",
       pay_method: "card",
-      merchant_uid: "13411-01311011",   // 주문번호
-      name: "전재산 납부되셨습니다.",
-      amount: 195000,                         // 숫자 타입
+      merchant_uid: "13411-42311",   // 주문번호
+      name: "이윤환 섹스",
+      amount: 500,                         // 숫자 타입
       buyer_email: "dldbsghks8@gmail.com",
       buyer_name: "",
       buyer_tel: "010-4242-4242",
       buyer_addr: "서울특별시 강남구 신사동",
       buyer_postcode: "01181"
-    }, function (rsp) { // callback
+    },
+    function (rsp) { // callback
       if (rsp.success) {
               console.log(rsp);
           } else {

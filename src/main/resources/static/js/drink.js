@@ -3,18 +3,18 @@ const deleteButton = document.getElementById('delete-btn');
 
 if (deleteButton) {
     deleteButton.addEventListener('click', event => {
-        let id = document.getElementById('article-id').value;
+        let id = document.getElementById('drink-id').value;
         function success() {
             alert('삭제가 완료되었습니다.');
-            location.replace('/articles');
+            location.replace('/drinkList');
         }
 
         function fail() {
             alert('삭제 실패했습니다.');
-            location.replace('/articles');
+            location.replace('/drinkList');
         }
 
-        httpRequest('DELETE',`/api/articles/${id}`, null, success, fail);
+        httpRequest('DELETE',`/api/drink/${id}`, null, success, fail);
     });
 }
 
@@ -27,21 +27,28 @@ if (modifyButton) {
         let id = params.get('id');
 
         body = JSON.stringify({
-            title: document.getElementById('title').value,
-            content: document.getElementById('content').value
+            name: document.getElementById('name').value,
+            cal: document.getElementById('cal').value,
+            car: document.getElementById('car').value,
+            pro: document.getElementById('pro').value,
+            fat: document.getElementById('fat').value,
+            na: document.getElementById('na').value,
+            cafe: document.getElementById('cafe').value,
+            gro: document.getElementById('gro').value,
+            other: document.getElementById('other').value
         })
 
         function success() {
             alert('수정 완료되었습니다.');
-            location.replace(`/articles/${id}`);
+            location.replace(`/update/${id}`);
         }
 
         function fail() {
             alert('수정 실패했습니다.');
-            location.replace(`/articles/${id}`);
+            location.replace(`/update/${id}`);
         }
 
-        httpRequest('PUT',`/api/articles/${id}`, body, success, fail);
+        httpRequest('PUT',`/api/drink/${id}`, body, success, fail);
     });
 }
 
@@ -52,40 +59,28 @@ if (createButton) {
     // 등록 버튼을 클릭하면 /api/articles로 요청을 보낸다
     createButton.addEventListener('click', event => {
         body = JSON.stringify({
-            title: document.getElementById('title').value,
-            content: document.getElementById('content').value
+            name: document.getElementById('name').value,
+            cal: document.getElementById('cal').value,
+            car: document.getElementById('car').value,
+            pro: document.getElementById('pro').value,
+            fat: document.getElementById('fat').value,
+            na: document.getElementById('na').value,
+            cafe: document.getElementById('cafe').value,
+            gro: document.getElementById('gro').value,
+            other: document.getElementById('other').value
         });
         function success() {
             alert('등록 완료되었습니다.');
-            location.replace('/articles');
+            location.replace('/drinkList');
         };
         function fail() {
             alert('등록 실패했습니다.');
-            location.replace('/articles');
+            location.replace('/drinkList');
         };
 
-        httpRequest('POST','/api/articles', body, success, fail)
+        httpRequest('POST','/api/drink', body, success, fail)
     });
 }
-
-const user_id = localStorage.getItem("access_token")
-const ddButton = document.getElementById('dd-btn');
-
-if (ddButton) {
-    ddButton.addEventListener('click', event => {
-        function success() {
-            alert('등록 완료되었습니다.');
-            location.replace(`/user/${user_id}`);
-        };
-        function fail() {
-            alert('등록 실패했습니다.');
-            location.replace(`/user/${user_id}`);
-        };
-
-        httpRequest('GET','/user', null, success, fail)
-    });
-}
-
 
 
 

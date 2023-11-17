@@ -1,7 +1,6 @@
 package me.firstSpring.dto.User;
 
 import lombok.Getter;
-import me.firstSpring.domain.Article;
 import me.firstSpring.domain.User;
 
 @Getter

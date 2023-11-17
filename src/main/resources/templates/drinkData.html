@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+</head>
+<body>
+<div class="p-5 mb-5 text-center</> bg-light">
+</div>
+
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-lg-8">
+      <article>
+        <input type="hidden" id="drink-id" th:value="${drink.id}">
+        <header class="mb-4">
+          <h1 class="fw-bolder mb-1" th:text="${drink.name}"></h1>
+        </header>
+        <section class="mb-5">
+          <p>칼로리</p>
+          <p class="fs-5 mb-4" th:text="${drink.cal}"></p>
+        </section>
+        <section class="mb-5">
+          <p>당</p>
+          <p class="fs-5 mb-4" th:text="${drink.car}"></p>
+        </section>
+        <section class="mb-5">
+          <p>단백질</p>
+          <p class="fs-5 mb-4" th:text="${drink.pro}"></p>
+        </section>
+        <section class="mb-5">
+          <p>지방</p>
+          <p class="fs-5 mb-4" th:text="${drink.fat}"></p>
+        </section>
+        <section class="mb-5">
+          <p>나트륨</p>
+          <p class="fs-5 mb-4" th:text="${drink.na}"></p>
+        </section>
+        <section class="mb-5">
+          <p>카페인</p>
+          <p class="fs-5 mb-4" th:text="${drink.cafe}"></p>
+        </section>
+        <section class="mb-5">
+          <p>종류</p>
+          <p class="fs-5 mb-4" th:text="${drink.gro}"></p>
+        </section>
+        <section class="mb-5">
+          <p>잡</p>
+          <p class="fs-5 mb-4" th:text="${drink.other}">++</p>
+        </section>
+        <button type="button" id="modify-btn"
+                th:onclick="|location.href='@{/new-drink?name={drinkName}(drinkName=${drink.name})}'|"
+                class="btn btn-primary btn-sm">수정</button>
+        <button type="button" id="delete-btn"
+                class="btn btn-secondary btn-sm">삭제</button>
+      </article>
+    </div>
+  </div>
+</div>
+
+<script src="/js/drink.js"></script>
+</body>

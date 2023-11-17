@@ -3,15 +3,11 @@ package me.firstSpring.service;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import me.firstSpring.domain.Drink;
-import me.firstSpring.dto.Article.AddArticleRequest;
 import me.firstSpring.dto.Drink.AddDrinkRequest;
-import me.firstSpring.dto.Article.UpdateArticleRequest;
 import me.firstSpring.dto.Drink.UpdateDrinkRequest;
 import me.firstSpring.repository.DrinkRepository;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
 @RequiredArgsConstructor //final이 붙거나 @NotNull이 붙은 필드의 생성자 추가
@@ -21,7 +17,6 @@ public class DrinkService {
 
     @Transactional
     public Drink save(AddDrinkRequest request){ //블로그 글을 추가하는 메서드
-        LocalDateTime createdAt = LocalDateTime.now();
         return drinkRepository.save(request.toEntity());
     } // 글 작성
 
@@ -46,9 +41,9 @@ public class DrinkService {
     }
 
     @Transactional //트랜젝션
-    public Drink update(long id, UpdateDrinkRequest request){
-        Drink drink = drinkRepository.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("not found: " + id));
+    public Drink update(String name, UpdateDrinkRequest request){
+        Drink drink = drinkRepository.findByName(name)
+                .orElseThrow(() -> new IllegalArgumentException("not found: " + name));
         drink.update(request.getOther());
 
         return drink;
