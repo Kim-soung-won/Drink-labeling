@@ -35,10 +35,10 @@ public class DrinkApiController {
         return ResponseEntity.ok().build();
     }
 
-    @PutMapping("/api/drink/{name}")
-    public ResponseEntity<Drink> updateArticle(@PathVariable String name,
+    @PutMapping("/api/drink/{id}")
+    public ResponseEntity<Drink> updateArticle(@PathVariable long id,
                                                  @RequestBody UpdateDrinkRequest request){
-        Drink updateDrink = drinkService.update(name,request);
+        Drink updateDrink = drinkService.update(id,request);
 
         return ResponseEntity.ok().body(updateDrink);
     }

@@ -41,10 +41,11 @@ public class DrinkService {
     }
 
     @Transactional //트랜젝션
-    public Drink update(String name, UpdateDrinkRequest request){
-        Drink drink = drinkRepository.findByName(name)
-                .orElseThrow(() -> new IllegalArgumentException("not found: " + name));
-        drink.update(request.getOther());
+    public Drink update(long id, UpdateDrinkRequest request){
+        Drink drink = drinkRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("not found: " + id));
+        drink.update(request.getName(), request.getCal(), request.getCar(),request.getPro() , request.getFat(),
+                request.getGro(), request.getOther(), request.getCafe(), request.getNa());
 
         return drink;
     }

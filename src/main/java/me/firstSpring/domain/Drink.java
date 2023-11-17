@@ -54,7 +54,15 @@ public class Drink {
         this.cafe = cafe;
         this.na=na;
     }
-    public void update(String other) {
+    public void update(String name, float cal, float car, float pro, float fat, String gro, String other, float cafe,float na) {
+        this.name = name;
+        this.cal = cal;
+        this.car = car;
+        this.pro = pro;
+        this.fat = fat;
+        this.gro = gro;
         this.other = other;
+        this.cafe = cafe;
+        this.na=na;
     }
 }

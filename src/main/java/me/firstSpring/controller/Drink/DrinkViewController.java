@@ -33,12 +33,6 @@ public class DrinkViewController {
         model.addAttribute("drink",new DrinkViewResponse(drink));
         return "drink";
     }
-    @GetMapping("/upload/{name}")
-    public String getContent(@PathVariable String name, Model model){
-        Drink drink = drinkService.findByName(name);
-        model.addAttribute("data", new DrinkViewResponse(drink));
-        return "data";
-    }
     @GetMapping("/update/{name}")
     public String getDataPage(@PathVariable String name, Model model){
         Drink drink = drinkService.findByName(name);

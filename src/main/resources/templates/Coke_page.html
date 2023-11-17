@@ -1,5 +1,5 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-
+<html xmlns:th="http://www.thymeleaf.org">
 <html>
 
 <head>
@@ -25,10 +25,8 @@
                   <span class="news-date__title">열량(Kcal)</span>
                   <span class="news-date__txt">01</span>
                 </div>
-                <div class="news__title">
-                    코카콜라 한 캔의 열량은 152Kcal 입니다.
+                <div class="news__title" th:text="${drink.name}+'의 칼로리는 100g 당 '+${drink.cal}+'Kcal 입니다.'">
                 </div>
-      
                 <p class="news__txt">
                 <br>하루 섭취 권장량은 대한민국 표준 남성 기준 2305Kcal, 여성 기준으로 1882Kcal 입니다.
                 </p>
@@ -38,43 +36,23 @@
                 </div>
               </a>
             </div>
-      
+
             <div class="news-slider__item swiper-slide">
               <a href="#" class="news__item">
                 <div class="news-date">
                   <span class="news-date__title">탄수화물</span>
                   <span class="news-date__txt">02</span>
                 </div>
-                <div class="news__title">
+                <div class="news__title" th:text="${drink.name}+'의 당은 100g 당 '+${drink.car}+'g 입니다.'">
                     코카콜라 한 캔의 탄수화물은 38g 입니다.
                 </div>
-      
+
                 <p class="news__txt">
                 <br>하루 섭취 권장량은 대한민국 표준 남성 기준 346g, 여성 기준으로 282g 입니다.
                 </p>
-      
+
                 <div class="news__img">
                     <img src="/js/img/drinkImage/rice.jpg" alt="news">
-                </div>
-              </a>
-            </div>
-      
-            <div class="news-slider__item swiper-slide">
-              <a href="#" class="news__item">
-                <div class="news-date">
-                  <span class="news-date__title">당류</span>
-                  <span class="news-date__txt">03</span>
-                </div>
-                <div class="news__title">
-                    코카콜라 한 캔의 당은 38g 입니다.
-                </div>
-      
-                <p class="news__txt">
-                <br>하루 섭취 권장량은 대한민국 표준 남성 기준 37g, 여성 기준으로 25g 입니다.
-                </p>
-      
-                <div class="news__img">
-                    <img src="/js/img/drinkImage/Sugar.jpg" alt="news">
                 </div>
               </a>
             </div>
@@ -85,8 +63,7 @@
                   <span class="news-date__title">나트륨</span>
                   <span class="news-date__txt">04</span>
                 </div>
-                <div class="news__title">
-                    코카콜라 한 캔의 나트륨은 11mg 입니다.
+                <div class="news__title" th:text="${drink.name}+'의 나트륨는 100g 당 '+${drink.na}+'g 입니다.'">
                 </div>
       
                 <p class="news__txt">

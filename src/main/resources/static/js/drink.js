@@ -23,8 +23,7 @@ const modifyButton = document.getElementById('modify-btn');
 
 if (modifyButton) {
     modifyButton.addEventListener('click', event => {
-        let params = new URLSearchParams(location.search);
-        let id = params.get('id');
+        let id = document.getElementById('drink-id').value;
 
         body = JSON.stringify({
             name: document.getElementById('name').value,
@@ -40,12 +39,12 @@ if (modifyButton) {
 
         function success() {
             alert('수정 완료되었습니다.');
-            location.replace(`/update/${id}`);
+            location.replace('/drinkList');
         }
 
         function fail() {
             alert('수정 실패했습니다.');
-            location.replace(`/update/${id}`);
+            location.replace('/drinkList');
         }
 
         httpRequest('PUT',`/api/drink/${id}`, body, success, fail);

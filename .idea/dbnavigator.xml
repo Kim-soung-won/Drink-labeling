@@ -15,8 +15,6 @@
     <connection id="63daf406-ba8b-4696-8750-b15b89d268b9">
       <console name="Connection" type="STANDARD" schema="blog" session="Main"><![CDATA[use blog;
 select * from drink
-insert into drink (name, cal, car, pro, fat, gro, other, cafe,na) values 
-('코카콜라',43.2,10.8,0,0,'탄산음료','애베베베',0.0,0.0)
 
 create table users(
     id bigint not null AUTO_INCREMENT,
