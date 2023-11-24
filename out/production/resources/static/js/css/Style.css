@@ -86,18 +86,57 @@ a, a:hover {
   z-index: 30;
 }
 
-.button {
+.search_button { /* 수정됨 */
   display: flex;
   justify-content: center;
+  background-color: white;
+  width: 650px;
+  height: 100px;
+  border-radius: 20px;
+  font-size: 4em;
+  color: black;
+  z-index: 30;
+  margin:auto;
+}
+
+.db_container {
+  display: flex;
+  flex-direction:initial;
+  z-index: 30;
+  margin-left: 20%
+}
+
+.drink_img {
+  display: flex;
+  float:left;
+  width: 300px;
+  height: 200px;
+  background-color: white;
+  justify-content: center;
+  align-items: center;
+  border-radius: 20px;
   z-index: 30;
 }
 
-label {
-  cursor: pointer;
+.drink_img img {
+  max-width: 80%;
+  max-height: 80%;
+}
+
+.drink_data {
+  display: flex;
+  float:left;
+  justify-content: center;
+  background-color: white;
+  width: 850px;
+  height: 200px;
+  border-radius: 20px;
   font-size: 1em;
-  color: white;
+  color: black;
   z-index: 30;
 }
+
+label { /* 삭제 */ }
 
 #input {
   visibility: hidden;

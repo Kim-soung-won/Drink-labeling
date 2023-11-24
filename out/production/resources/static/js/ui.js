@@ -11,7 +11,7 @@ if(cokeCard){
                   location.replace(`/코카콜라`);
               };
 
-              httpRequest('GET',`/코카콜라`, null, success, fail)
+              httpRequest('GET',`/data/코카콜라`, null, success, fail)
           });
 }
 if(pepsiCard){
@@ -23,7 +23,7 @@ if(pepsiCard){
                   location.replace(`/펩시`);
               };
 
-              httpRequest('GET',`/펩시`, null, success, fail)
+              httpRequest('GET',`/data/펩시`, null, success, fail)
           });
 }
 if(sodaCard){
@@ -35,7 +35,7 @@ if(sodaCard){
                   location.replace(`/사이다`);
               };
 
-              httpRequest('GET',`/사이다`, null, success, fail)
+              httpRequest('GET',`/data/사이다`, null, success, fail)
           });
 }
 function httpRequest(method, url, body, success, fail) {
