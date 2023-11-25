@@ -19,6 +19,8 @@
       <div class="drink_data">
         <label>
           <h1 th:text="'음료명 : '+${drink.name}" ></h1>
+          <h3 th:text="'분류 : '+${drink.gro}" ></h3>
+          <h3 th:text="'제조사 : '+${drink.other}" ></h3>
         </label>
       </div>
     </div>
@@ -86,8 +88,52 @@
                 </div>
               </a>
             </div>
-      
+            <div class="news-slider__item swiper-slide">
+              <a href="#" class="news__item">
+                <div class="news-date">
+                  <span class="news-date__title">단백질</span>
+                  <span class="news-date__txt">04</span>
+                </div>
+                <div class="news__title" th:text="${drink.name}+'의 단백질은 100g 당 '+${drink.pro}+'g 입니다.'">
+                </div>
+
+                <p class="news__txt">
+                  <br>세계 보건 기구(WHO) 기준 성인의 최소 필요 단백질은 600mg 이며, 최대 2000mg 를 넘기지 않는 것을 권장하고 있습니다.
+                </p>
+
+                <div class="news__img">
+                  <img src="/js/img/drinkImage/protein.jpg" alt="news">
+                </div>
+              </a>
+            </div>
+            <div class="news-slider__item swiper-slide">
+              <a href="#" class="news__item">
+                <div class="news-date">
+                  <span class="news-date__title">지방</span>
+                  <span class="news-date__txt">04</span>
+                </div>
+                <div class="news__title" th:text="${drink.name}+'의 지방은 100g 당 '+${drink.fat}+'g 입니다.'">
+                </div>
+
+                <p class="news__txt">
+                  <br>세계 보건 기구(WHO) 기준 성인의 최소 필요 지방은 600mg 이며, 최대 2000mg 를 넘기지 않는 것을 권장하고 있습니다.
+                </p>
+
+                <div class="news__img">
+                  <img src="/js/img/drinkImage/pat.jpg" alt="news">
+                </div>
+              </a>
+            </div>
+
+
+
+
+
+
           </div>
+
+
+        </div>
       
           <div class="news-slider__ctr">
       
