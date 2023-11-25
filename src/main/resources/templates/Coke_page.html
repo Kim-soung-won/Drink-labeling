@@ -11,6 +11,17 @@
 </head>
 
 <body>
+    <div class="db_container">
+      <div class="drink_img">
+        <img th:src="@{/js/img/drinkImage/{imageName}.jpg(imageName=${drink.name})}" />
+      </div>
+      &nbsp;
+      <div class="drink_data">
+        <label>
+          <h1 th:text="'음료명 : '+${drink.name}" ></h1>
+        </label>
+      </div>
+    </div>
     <div class="wrapper">
         <div class="background">
           <img src="https://res.cloudinary.com/muhammederdem/image/upload/q_60/v1537132206/news-slider/background.webp" alt="">
