@@ -12,15 +12,16 @@ if($(window).width() > 800) {  //화면 크기 초과시 조절
         var newsItem = document.querySelectorAll('.news__item');
         newsItem.forEach(function (element, index) {
             element.addEventListener('mouseover', function () {
+
                 var x = this.getBoundingClientRect().left;
                 var y = this.getBoundingClientRect().top;
+
                 var width = this.getBoundingClientRect().width;
                 var height = this.getBoundingClientRect().height;
 
-                $('.item-bg').addClass('active');
-                $('.news__item').removeClass('active');
-                // $('.news__item').removeClass('active');
-
+                //$('.item-bg').addClass('active');
+                //$('.news__item').removeClass('active');
+                //$('.news__item').removeClass('active');
 
                 bg.style.width = width + 'px';
                 bg.style.height = height + 'px';
@@ -36,7 +37,6 @@ if($(window).width() > 800) {  //화면 크기 초과시 조절
 
     });
 }
-
 
 var swiper = new Swiper('.news-slider', { // 슬라이더 설정
     effect: 'coverflow',
@@ -91,6 +91,7 @@ var swiper = new Swiper('.news-slider', { // 슬라이더 설정
         }
     }
 });
+
 
 swiper.on('touchEnd', function () { // 터치 종료시 클래스 체인지
     $('.news__item').removeClass('active');

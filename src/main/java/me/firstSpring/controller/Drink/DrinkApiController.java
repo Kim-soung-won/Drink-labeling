@@ -36,7 +36,7 @@ public class DrinkApiController {
     }
 
     @PutMapping("/api/drink/{id}")
-    public ResponseEntity<Drink> updateArticle(@PathVariable long id,
+    public ResponseEntity<Drink> updateDrink(@PathVariable long id,
                                                  @RequestBody UpdateDrinkRequest request){
         Drink updateDrink = drinkService.update(id,request);
 

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+</head>
+<body>
+<div class="p-5 mb-5 text-center</> bg-light">
+</div>
+
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-lg-8">
+      <article>
+        <input type="hidden" id="price-id" th:value="${price.id}">
+        <header class="mb-4">
+          <h1 class="fw-bolder mb-1" th:text="${price.name}"></h1>
+        </header>
+        <section class="mb-5">
+          <p>가격</p>
+          <p class="fs-5 mb-4" th:text="${price.price}"></p>
+        </section>
+        <section class="mb-5">
+          <p>크기</p>
+          <p class="fs-5 mb-4" th:text="${price.size}"></p>
+        </section>
+        <section class="mb-5">
+          <p>유형</p>
+          <p class="fs-5 mb-4" th:text="${price.gro}"></p>
+        </section>
+        <section class="mb-5">
+          <p>브랜드</p>
+          <p class="fs-5 mb-4" th:text="${price.brand}"></p>
+        </section>
+        <button type="button" id="modify-btn"
+                th:onclick="|location.href='@{/new-price?id={priceId}(priceId=${price.id})}'|"
+                class="btn btn-primary btn-sm">수정</button>
+        <button type="button" id="delete-btn"
+                class="btn btn-secondary btn-sm">삭제</button>
+      </article>
+    </div>
+  </div>
+</div>
+
+<script src="/js/price.js"></script>
+</body>

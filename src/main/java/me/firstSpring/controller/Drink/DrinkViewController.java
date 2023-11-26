@@ -25,19 +25,19 @@ public class DrinkViewController {
                 .toList();
         model.addAttribute("drink",drinks);
 
-        return "drinkList";
+        return "Drink/drinkList";
     }
     @GetMapping("/drink/{id}")
     public String getDrink(@PathVariable Long id, Model model){
         Drink drink = drinkService.findById(id);
         model.addAttribute("drink",new DrinkViewResponse(drink));
-        return "drink";
+        return "Drink/drink";
     }
     @GetMapping("/update/{name}")
     public String getDataPage(@PathVariable String name, Model model){
         Drink drink = drinkService.findByName(name);
         model.addAttribute("drink", new DrinkViewResponse(drink));
-        return "drinkData";
+        return "Drink/drinkData";
     }
 
     @GetMapping("/new-drink")
@@ -49,6 +49,6 @@ public class DrinkViewController {
             Drink drink = drinkService.findByName(name);
             model.addAttribute("drink", new DrinkViewResponse(drink));
         }
-        return "newDrink";
+        return "Drink/newDrink";
     }
 }

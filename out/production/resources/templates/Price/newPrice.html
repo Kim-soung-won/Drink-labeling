@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+</head>
+<body>
+<div class="p-5 mb-5 text-center</> bg-light">
+</div>
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-lg-8">
+            <article>
+                <input id="price-id" th:value="${price.id}" type="hidden">
+                <section class="mb-5">
+                    <p>브랜드</p>
+                    <textarea class="form-control h-25" rows="1" placeholder="내용" id="brand" th:text="${price.brand}"></textarea>
+                </section>
+                <header class="mb-4">
+                    <p>이름</p>
+                    <input type="text" class="form-control" placeholder="제목" id="name" th:value="${price.name}">
+                </header>
+                <section class="mb-5">
+                    <p>가격</p>
+                    <textarea class="form-control h-25" rows="1" placeholder="내용" id="price" th:text="${price.price}"></textarea>
+                </section>
+                <section class="mb-5">
+                    <p>용량</p>
+                    <textarea class="form-control h-25" rows="1" placeholder="내용" id="size" th:text="${price.size}"></textarea>
+                </section>
+                <section class="mb-5">
+                    <p>유형</p>
+                    <textarea class="form-control h-25" rows="1" placeholder="내용" id="gro" th:text="${price.gro}"></textarea>
+                </section>
+                <button th:if="${price.id} != null" type="button" id="modify-btn" class="btn btn-primary btn-sm">수정</button>
+                <button th:if="${price.id} == null" type="button" id="create-btn" class="btn btn-primary btn-sm">등록</button>
+            </article>
+        </div>
+    </div>
+</div>
+
+<script src="/js/price.js"></script>
+</body>

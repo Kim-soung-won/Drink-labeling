@@ -14,8 +14,7 @@
   <component name="DBNavigator.Project.DatabaseConsoleManager">
     <connection id="63daf406-ba8b-4696-8750-b15b89d268b9">
       <console name="Connection" type="STANDARD" schema="blog" session="Main"><![CDATA[use blog;
-select * from users
-
+select * from price
 create table users(
     id bigint not null AUTO_INCREMENT,
     email varchar(255) not null,
@@ -26,6 +25,17 @@ create table users(
     tall int,
     primary key (id)
 )
+create table price(
+    id bigint not null AUTO_INCREMENT,
+    drink_id bigint,
+    name varchar(20) not null,
+    price int not null, 
+    size int not null,
+    gro varchar(10) not null,
+    brand varchar(10) not null,
+    primary key (id),
+    FOREIGN KEY (drink_id) REFERENCES drink(id)
+);
 create table drink(
     id bigint not null AUTO_INCREMENT,
     name varchar(20) not null,

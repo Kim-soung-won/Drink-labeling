@@ -55,7 +55,7 @@ a, a:hover {
   height: 500px;
   position: absolute;
   top: 30px;
-  background: #fff;
+  background: white;
   border-radius: 10px;
   box-shadow: 0 6px 26px 6px rgba(0, 0, 0, 0.25);
   opacity: 0;
@@ -86,7 +86,7 @@ a, a:hover {
   z-index: 30;
 }
 
-.search_button { /* 수정됨 */
+.srch_button { /* 수정됨 */
   display: flex;
   justify-content: center;
   background-color: white;
@@ -133,6 +133,7 @@ a, a:hover {
 .drink_data { /* 수정됨 */
   display: flex;
   float:left;
+  justify-content: center;
   background-color: white;
   width: 30vw;
   height: 12.5vw;
@@ -141,13 +142,7 @@ a, a:hover {
   color: black;
   margin-right: auto;
   z-index: 30;
-  text-align : left;
 }
-.drink_data label h1 {
-        text-align: left;
-    }
-
-label { /* 삭제 */ }
 
 #input {
   visibility: hidden;
@@ -224,9 +219,13 @@ label { /* 삭제 */ }
     width: 340px;
   }
 }
-.news-slider__item.swiper-slide {
+.news-slider__item.swiper-slide { /* 수정 */
   opacity: 0;
   pointer-events: none;
+  background-color: white;
+  border-radius: 20px;
+  margin-left: 0.1em;
+  margin-right: 0.1em;
   transition: all 0.3s;
 }
 .news-slider__item.swiper-slide-active, .news-slider__item.swiper-slide-prev, .news-slider__item.swiper-slide-next {
@@ -293,9 +292,9 @@ label { /* 삭제 */ }
     width: 70px;
   }
 }
-.news__item {
+.news__item { /* 수정 */
   padding: 40px;
-  color: #fff;
+  color: black;
   border-radius: 10px;
   display: block;
   transition: all 0.3s;
