@@ -86,7 +86,7 @@ a, a:hover {
   z-index: 30;
 }
 
-.srch_button { /* 수정됨 */
+.search_button { /* 수정됨 */
   display: flex;
   justify-content: center;
   background-color: white;
