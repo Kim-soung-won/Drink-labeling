@@ -30,6 +30,15 @@ public class PriceViewController {
 
         return "Price/priceList";
     }
+    @GetMapping("/dataPrice/{name}")
+    public String getPrice(Model model, @PathVariable String name){ //Model : HTML쪽으로 값을 넘겨주는 객체
+        List<PriceListViewResponse> prices = priceService.findByBrand(name).stream()
+                .map(PriceListViewResponse::new)
+                .toList();
+        model.addAttribute("price",prices);
+
+        return "Price/price_ui";
+    }
     @GetMapping("/price/{id}")
     public String getPrice(@PathVariable Long id, Model model){
         Price price = priceService.findById(id);

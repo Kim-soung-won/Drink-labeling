@@ -26,6 +26,9 @@ public class PriceService {
         return priceRepository.findAll();
     } //모든 글 목록 리스트로 조회
 
+    public List<Price> findByBrand(String brand){
+        return priceRepository.findByBrand(brand);
+    }
     public Price findById(long id) { //id로 글 조회
         return priceRepository.findById(id).
                 orElseThrow(() -> new IllegalArgumentException("not found: " + id));

@@ -46,18 +46,18 @@
         <div class="news-slider" >
           <div class="news-slider__wrp swiper-wrapper">
             <div class="news-slider__item swiper-slide" th:each="item : ${drink}" >
-              <a href="#" class="news__item" >
+              <a href="#" class="news__item" th:href="@{/data/{data}(data=${item.name})}">
                 <div class="news-date">
                   <span class="news-date__title" th:text="${item.name}"></span>
                 </div>
                 <div class="news__title" th:text="${item.name}+'페이지로'"></div>
-      
+
                 <p class="news__txt">
                 <br th:text="${item.name}+'에 대한 자세한 내용이 담긴 페이지로 이동합니다.'">
                 </p>
-      
+
                 <div class="news__img">
-                  <img src="/js/img/drinkImage/Coke.jpg" alt="news">
+                    <img th:src="@{/js/img/drinkImage/{imageName}.jpg(imageName=${item.name})}">
                 </div>
               </a>
             </div>
