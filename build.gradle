@@ -60,6 +60,7 @@ dependencies {
 //    OAuth2 사용하기 위한 의존성
 
     implementation 'org.openpnp:opencv:4.5.5-1' // OpenCV 라이브러리
+
 }
 
 jar{

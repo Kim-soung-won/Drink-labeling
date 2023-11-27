@@ -39,6 +39,7 @@ public class PriceViewController {
 
         return "Price/price_ui";
     }
+
     @GetMapping("/price/{id}")
     public String getPrice(@PathVariable Long id, Model model){
         Price price = priceService.findById(id);
@@ -56,5 +57,13 @@ public class PriceViewController {
             model.addAttribute("price", new PriceViewResponse(price));
         }
         return "Price/newPrice";
+    }
+
+    @GetMapping("/order/drink/{id}")
+    //id 키를 가진 쿼리 파라미터의 값을 id변수에 매핑
+    public String orderDrink(@PathVariable Long id, Model model){
+        Price price = priceService.findById(id);
+        model.addAttribute("price", new PriceViewResponse(price));
+        return "Price/privateInform";
     }
 }

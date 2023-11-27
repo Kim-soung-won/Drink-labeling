@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>인적사항 기입 창</title>
+  <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .form-container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 400px;
+        }
+
+        .form-container label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        .form-container input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 16px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .form-container button {
+            background-color: #4caf50;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+<div class="form-container">
+  <img th:src="@{/js/img/drinkImage/{imageName}{size}.jpg(imageName=${price.name}, size=${price.size})}">
+  <label for="quantity" th:text="'제품 명 : '+ ${price.name}"></label>
+  <label for="quantity" th:text="'용량 : '+ ${price.size}+'ml'"></label>
+  <label for="quantity" th:text="'가격 : '+ ${price.price}"></label>
+</div>
+<div class="form-container">
+  <label for="name">성명:</label>
+  <input type="text" id="name" name="name" required>
+
+  <label for="address">주소:</label>
+  <input type="text" id="address" name="address" required>
+
+  <label for="phone">전화번호:</label>
+  <input type="text" id="phone" name="phone" pattern="\d{3}-\d{4}-\d{4}" placeholder="010-1234-5678" required>
+
+  <label for="dob">생년월일:</label>
+  <input type="date" id="dob" name="dob" required>
+
+
+  <label for="quantity">수량:</label>
+  <input type="number" id="quantity" name="quantity" required>
+
+  <label for="payment">결제방식:</label>
+  <select id="payment" name="payment" required>
+    <option value="credit">신용카드</option>
+    <option value="cash">현금</option>
+    <option value="other">기타</option>
+  </select>
+
+  <button type="submit">제출</button>
+</div>
+
+</body>
+</html>

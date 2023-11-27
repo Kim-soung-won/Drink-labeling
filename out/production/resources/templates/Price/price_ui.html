@@ -22,7 +22,7 @@
           <div class="news-slider__wrp swiper-wrapper">
 
             <div class="news-slider__item swiper-slide" th:each="item : ${price}" >
-              <a href="#" class="news__item">
+              <a th:href="@{/order/drink/{id}(id=${item.id})}" class="news__item" >
                 <div class="news-date">
                   <span class="news-date__title" th:text="${item.name}"></span>
                 </div>
@@ -33,8 +33,7 @@
                 </p>
 
                 <div class="news__img">
-                  <p th:text="${item.name}"></p>
-                  <img th:src="@{/js/img/drinkImage/{imageName}.jpg(imageName=${item.name})}">
+                  <img th:src="@{/js/img/drinkImage/{imageName}{size}.jpg(imageName=${item.name}, size=${item.size})}">
                 </div>
               </a>
             </div>
