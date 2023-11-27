@@ -15,13 +15,19 @@
       <div class="drink_img">
         <img th:src="@{/js/img/drinkImage/{imageName}.jpg(imageName=${drink.name})}" />
       </div>
-      &nbsp;
-      <div class="drink_data">
-        <label>
-          <h1 th:text="'음료명 : '+${drink.name}" ></h1>
-          <h3 th:text="'분류 : '+${drink.gro}" ></h3>
-          <h3 th:text="'제조사 : '+${drink.other}" ></h3>
-        </label>
+      <div class="db_container_ii">
+        <div class="drink_data">
+          <label>
+            <h1 th:text="'음료명 : '+${drink.name}" ></h1>
+            <h3 th:text="'분류 : '+${drink.gro}" ></h3>
+            <h3 th:text="'제조사 : '+${drink.other}" ></h3>
+          </label>
+        </div>
+        <div class="move_to_buy">
+          <label>
+            <br> 구매 <br> 화면으로
+          </label>
+        </div>
       </div>
     </div>
     <div class="wrapper">

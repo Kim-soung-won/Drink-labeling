@@ -128,18 +128,52 @@ a, a:hover {
   max-height: 85%;
   border-radius: 1em;
 }
-
-.drink_data { /* 수정됨 */
+.db_container_ii { /* 추가됨 */
   display: flex;
   float:left;
   justify-content: center;
+  text-align: left;
   background-color: white;
   width: 30vw;
-  height: 12.5vw;
+  height: 6.25em;
   border-radius: 20px;
-  font-size: 1vw;
+  font-size: 2vw;
   color: black;
   margin-right: auto;
+  z-index: 30;
+}
+
+.drink_data { /* 수정됨 */
+    display: flex;
+    float:left;
+    justify-content: center;
+    text-align: left;
+    line-height: 100%;
+    background-color: white;
+    width: 20vw;
+    height: 90%;
+    border-radius: 20px;
+    font-size: 1.5vw;
+    color: black;
+    margin-right: 5%;
+    z-index: 30;
+}
+.move_to_buy { /* 추가됨 */
+  display: flex;
+  float:left;
+  justify-content: center;
+  background-color: skyblue;
+  text-align: center;
+  line-height: 100%;
+  width: 6em;
+  height: 4em;
+  border-radius: 20px;
+  font-size: 2vw;
+  color: black;
+  box-shadow: inset -0.3em -0.3em 0.7em 0.2em rgb(71, 157, 255);
+  margin-right:5%;
+  margin-top : auto;
+  margin-bottom: auto;
   z-index: 30;
 }
 

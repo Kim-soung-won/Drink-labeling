@@ -1,17 +1,42 @@
 var IMP = window.IMP;
 IMP.init('imp76806111') // 예: 'imp00000000a'
 
+
+function generateUniqueNumber() {
+    // 현재 시간을 이용하여 고유한 숫자 생성
+    const timestamp = Date.now();
+
+    // Math.random()을 이용하여 무작위 숫자 생성
+    const randomValue = Math.random();
+
+    // 위의 두 값을 조합하여 고유한 일련번호 생성
+    const uniqueNumber = `${timestamp}-${randomValue}`;
+
+    return uniqueNumber;
+}
+
 function requestPay() {
+    let price = document.getElementById('price');
+    let priceText = parseInt(price.innerText, 10);
+    let quantity = parseInt(document.getElementById('quantity').value, 10);
+    let drinkName = document.getElementById('drinkName');
+    let drinkNameText = drinkName.innerText;
+    let address = document.getElementById('address').value;
+    let phone = document.getElementById('phone').value;
+    let name = document.getElementById('name').value;
+
+    let amount = priceText*quantity*6;
+    console.log(amount)
     IMP.request_pay({
       pg: "kcp.{상점ID}",
       pay_method: "card",
-      merchant_uid: "13411-42311",   // 주문번호
-      name: "이윤환 섹스",
-      amount: 500,                         // 숫자 타입
+      merchant_uid: generateUniqueNumber(),   // 주문번호
+      name: drinkNameText,
+      amount: amount,                         // 숫자 타입
       buyer_email: "dldbsghks8@gmail.com",
-      buyer_name: "",
-      buyer_tel: "010-4242-4242",
-      buyer_addr: "서울특별시 강남구 신사동",
+      buyer_name: name,
+      buyer_tel: phone,
+      buyer_addr: address,
       buyer_postcode: "01181"
     },
     function (rsp) { // callback
