@@ -113,7 +113,7 @@ a, a:hover {
 .drink_img { /* 수정됨 */
   display: flex;
   float:left;
-  width: 20vw;
+  width: 15vw;
   height: 12.5vw;
   background-color: white;
   justify-content: center;
@@ -142,7 +142,9 @@ a, a:hover {
   margin-right: auto;
   z-index: 30;
 }
-
+.textBold{
+    font-weight: bold;
+}
 .drink_data { /* 수정됨 */
     display: flex;
     float:left;
