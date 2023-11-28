@@ -23,12 +23,13 @@
             <p class="textBold" th:text="'제조사 : '+${drink.other}" ></p>
           </label>
         </div>
-        <div class="move_to_buy">
-          <label>
-            <a th:href="@{/dataPrice/{data}(data=${drink.name})}"></a>
-            <br> 구매 <br> 화면으로
-          </label>
-        </div>
+        <a th:href="@{/dataPrice/{data}(data=${drink.name})}"  class="move_to_buy">
+          <div>
+            <label>
+              <br> 구매 <br> 화면으로
+            </label>
+          </div>
+        </a>
       </div>
     </div>
     <div class="wrapper">
