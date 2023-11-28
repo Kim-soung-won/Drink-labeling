@@ -16,8 +16,6 @@
       <console name="Connection" type="STANDARD" schema="blog" session="Main"><![CDATA[use blog;
 select * from drink
 
-update price set brand = "코코팜(망고코넛)" where brand = "코코팜(망코코넛)"
-
 create table users(
     id bigint not null AUTO_INCREMENT,
     email varchar(255) not null,
