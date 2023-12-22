@@ -10,9 +10,10 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
-
 @Table(name = "users")
 @Entity
 @Getter
@@ -33,30 +34,35 @@ public class User implements UserDetails{
     @Column(name = "nickname", unique = true)
     private String nickname;
 
-    @Column(name ="age")
-    private Long age;
+    @Column(name = "role")
+    private String role;
 
-    @Column(name = "weight")
-    private Long weight;
+    @Column(name = "provider")
+    private String provider;
 
-    @Column(name = "tall")
-    private Long tall;
-
+    @Column(name = "provider_id")
+    private String provider_id;
 
     @Builder
-    public User(String email, String password, String nickname, Long age, Long weight, Long tall){
+    public User(String email, String password, String nickname, String role, String provider, String provider_id){
         this.email = email;
         this.password = password;
         this.nickname = nickname;
-        this.age = age;
-        this.weight = weight;
-        this.tall = tall;
+        this.role = role;
+        this.provider = provider;
+        this.provider_id = provider_id;
     }
 
     @Override // 권한부여 메소드 오버라이딩
     //GrantedAuthority = 사용자가 가진 권한을 반환함
     public Collection<? extends GrantedAuthority> getAuthorities(){
         return List.of(new SimpleGrantedAuthority("user"));
+    }
+    public List<String> getRoleList(){
+        if(this.role.length()>0){
+            return Arrays.asList(this.role.split(","));
+        }
+        return new ArrayList<>();
     }
 
     @Override
@@ -90,15 +96,8 @@ public class User implements UserDetails{
     }
 
     //사용자 이름 변경
-    public User update(String nickname){
+    public User update(String nickname) {
         this.nickname = nickname;
         return this;
     }
-
-    public void update_data(Long age, Long weight, Long tall) {
-        this.age = age;
-        this.weight = weight;
-        this.tall = tall;
-    }
-
 }

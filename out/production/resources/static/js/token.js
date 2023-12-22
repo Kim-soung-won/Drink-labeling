@@ -1,14 +1,16 @@
+//tokenAccessPage.html
+
 const token = searchParam('token')
-const id = searchParam('id')
 
 
 if (token) {
-    localStorage.setItem("access_token", token)
-}
-if (id) {
-    localStorage.setItem("user_email",id)
+    localStorage.setItem("access_token", token);
 }
 
 function searchParam(key) {
     return new URLSearchParams(location.search).get(key);
+}
+
+if(token){
+    location.replace("/drinkList");
 }

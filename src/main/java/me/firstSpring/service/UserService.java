@@ -1,10 +1,8 @@
 package me.firstSpring.service;
 
-import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import me.firstSpring.domain.User;
 import me.firstSpring.dto.User.AddUserRequest;
-import me.firstSpring.dto.User.UpdateUserRequest;
 import me.firstSpring.repository.UserRepository;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -40,11 +38,4 @@ public class UserService {
                 .orElseThrow(() -> new IllegalArgumentException("Unexpected user"));
     }
 
-    @Transactional //트랜젝션
-    public User update(long id, UpdateUserRequest request){
-        User user = userRepository.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("not found: " + id));
-        user.update_data(request.getAge(),request.getWeight(),request.getTall());
-        return user;
-    }
 }

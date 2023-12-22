@@ -20,6 +20,7 @@ public class TokenProvider {
     public String generateToken(User user, Duration expiredAt){ //유저, 기간
         Date now = new Date();
         return makeToken(new Date(now.getTime() + expiredAt.toMillis()),user);
+        //to.Millis() = 해당 시간을 밀리초 단위로 반환함
     }
     //JWT 토큰 생성 메서드
     private String makeToken(Date expiry, User user){ //expiry = 만료시간 , User = 유저 정보
@@ -31,6 +32,8 @@ public class TokenProvider {
                 .setExpiration(expiry) // exp(만료일시) : expiry 멤버 변수값
                 .setSubject(user.getEmail()) //sub(토큰 제목) : 유저의 이메일
                 .claim("id",user.getId()) // id : 유저의 ID
+                .claim("email",user.getEmail())
+                .claim("role", user.getRole())
                 .signWith(SignatureAlgorithm.HS256,jwtProperties.getSecretKey())
                 //서명 : 비밀값과 함깨 해시값을 HS256방식으로 암호화
                 .compact();

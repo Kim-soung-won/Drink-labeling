@@ -24,7 +24,8 @@ public class OAuth2SuccessHandler extends SimpleUrlAuthenticationSuccessHandler 
     public static final String REFRESH_TOKEN_COOKIE_NAME = "refresh_token";
     public static final Duration REFRESH_TOKEN_DURATION = Duration.ofDays(14);
     public static final Duration ACCESS_TOKEN_DURATION = Duration.ofDays(1);
-    public static final String REDIRECT_PATH = "/drinkList";
+    public static final String REDIRECT_PATH = "/successLogin";
+    public static final String SIGNIN_PATH = "/signup";
 
     private final TokenProvider tokenProvider;
     private final RefreshTokenRepository refreshTokenRepository;
@@ -36,19 +37,19 @@ public class OAuth2SuccessHandler extends SimpleUrlAuthenticationSuccessHandler 
                                         Authentication authentication) throws IOException{
         OAuth2User oAuth2User = (OAuth2User) authentication.getPrincipal();
         User user = userService.findByEmail((String) oAuth2User.getAttributes().get("email"));
-
+        //네이버 OAuth 안되는 구간 .get("email")로 값을 받아오기 전에 json response 처리를 우선해야함
         //리프레시 토큰 생성 -> 저장 -> 쿠키에 저장
-        String refreshToken = tokenProvider.generateToken(user,REFRESH_TOKEN_DURATION);
-        saveRefreshToken(user.getId(),refreshToken);
-        addRefreshTokenToCookie(request,response,refreshToken);
+        String refreshToken = tokenProvider.generateToken(user,REFRESH_TOKEN_DURATION); //기간을 담아서 새로운 토큰 생성
+        saveRefreshToken(user.getId(),refreshToken); //토큰을 refresh_token테이블에 저장
+        addRefreshTokenToCookie(request,response,refreshToken); //브라우저에 있는 기존 토큰 삭제, 새 토큰 추가
 
         //액세스 토큰 생성 -> 패스에 액세스 토큰 추가
         String accessToken = tokenProvider.generateToken(user, ACCESS_TOKEN_DURATION);
+
         String targetUrl = getTargetUrl(accessToken);
 
         //인증 관련 설정 값, 쿠키 제거
         clearAuthenticationAttributes(request,response);
-
         //리다이렉트
         getRedirectStrategy().sendRedirect(request,response,targetUrl);
     }
@@ -66,8 +67,8 @@ public class OAuth2SuccessHandler extends SimpleUrlAuthenticationSuccessHandler 
     private void addRefreshTokenToCookie(HttpServletRequest request,HttpServletResponse response,
                                          String refreshToken){
         int cookieMaxAge = (int) REFRESH_TOKEN_DURATION.toSeconds();
-        CookieUtil.deleteCookie(request,response,REFRESH_TOKEN_COOKIE_NAME);
-        CookieUtil.addCookie(response,REFRESH_TOKEN_COOKIE_NAME,refreshToken,cookieMaxAge);
+        CookieUtil.deleteCookie(request,response,REFRESH_TOKEN_COOKIE_NAME); //기존에 있던 쿠키 삭제
+        CookieUtil.addCookie(response,REFRESH_TOKEN_COOKIE_NAME,refreshToken,cookieMaxAge); //새로 받은 쿠키 추가
     }
 
     //인증 관련 설정값, 쿠키 제거

@@ -50,10 +50,8 @@ function handleImageUpload(event) {
                     var coke = data.drinks[maxProbabilityIndex];
                     console.log(coke);
                     function success() {
-                                location.replace(`/data/${coke}`);
                             };
                     function fail() {
-                                location.replace(`/data/${coke}`);
                             };
                     httpRequest('GET',`/data/${coke}`, null, success, fail)
                   })

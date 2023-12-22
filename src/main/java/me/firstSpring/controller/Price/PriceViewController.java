@@ -5,14 +5,14 @@ import me.firstSpring.domain.Drink;
 import me.firstSpring.domain.Price;
 import me.firstSpring.dto.Drink.DrinkListViewResponse;
 import me.firstSpring.dto.Drink.DrinkViewResponse;
+import me.firstSpring.dto.Drink.UpdateDrinkRequest;
 import me.firstSpring.dto.Price.PriceListViewResponse;
 import me.firstSpring.dto.Price.PriceViewResponse;
 import me.firstSpring.service.PriceService;
+import org.springframework.http.ResponseEntity;
 import org.springframework.ui.Model;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 

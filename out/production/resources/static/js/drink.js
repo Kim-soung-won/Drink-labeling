@@ -81,6 +81,21 @@ if (createButton) {
     });
 }
 
+//const aaButton = document.getElementById('aa-btn');
+//
+//if (aaButton) {
+//    // 등록 버튼을 클릭하면 /api/articles로 요청을 보낸다
+//    aaButton.addEventListener('click', event => {
+//        body = JSON.stringify({
+//        });
+//        function success() {
+//        };
+//        function fail() {
+//            alert('등록 실패했습니다.');
+//        };
+//    });
+//}
+
 
 
 
@@ -102,16 +117,21 @@ function getCookie(key) {
     return result;
 }
 
+
 // HTTP 요청을 보내는 함수
 function httpRequest(method, url, body, success, fail) {
-    fetch(url, {
+    const headers = {
+        Authorization: 'Bearer ' + localStorage.getItem('access_token'),
+        'Content-Type': 'application/json',
+    };
+    const options = {
         method: method,
-        headers: { // 로컬 스토리지에서 액세스 토큰 값을 가져와 헤더에 추가
-            Authorization: 'Bearer ' + localStorage.getItem('access_token'),
-            'Content-Type': 'application/json',
-        },
-        body: body,
-    }).then(response => {
+        headers: headers,
+    };
+    if (method !== 'GET') {
+            options.body = body;
+    }
+    fetch(url, options).then(response => {
         if (response.status === 200 || response.status === 201) {
             return success();
         }

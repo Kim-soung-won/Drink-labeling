@@ -12,6 +12,9 @@
   <button type="button" id="create-btn"
           th:onclick="|location.href='@{/new-drink}'|"
           class="btn btn-secondary btn-sm mb-3">글 등록</button>
+  <button type="button" id="aa-btn"
+          th:onclick="|location.href='@{/userDataPage}'|"
+          class="btn btn-secondary btn-sm mb-3">글</button>
   <div class="row-6" th:each="item : ${drink}">
     <div class="card">
       <div class="card-header" th:text="${item.name}">
@@ -23,6 +26,5 @@
     <br>
   </div>
 </div>
-<script src="/js/token.js"></script>
-<script src="/js/article.js"></script>
+<script src="/js/drink.js"></script>
 </body>
