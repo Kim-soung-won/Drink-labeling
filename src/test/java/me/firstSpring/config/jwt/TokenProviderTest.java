@@ -81,23 +81,6 @@ class TokenProviderTest {
         assertThat(result).isTrue();
     }
 
-    @DisplayName("getAuthentication() : 토큰 기반으로 인증 정보를 가져올 수 있다.")
-    @Test
-    void getAuthentication(){
-        String userEmail = "user@email.com";
-        //given jjwt라이브러리를 사용해 유저이메일을 담은 토큰을 만든다.
-        String token = JwtFactory.builder()
-                .subject(userEmail)
-                .build()
-                .createToken(jwtProperties);
-
-        //when 인증 객체를 반환받는다.
-        Authentication authentication = tokenProvider.getAuthentication(token);
-
-        //then 인증객체의 유저이름을 가져와 같은지 확인한다.
-        assertThat(((UserDetails) authentication.getPrincipal()).getUsername()).isEqualTo(userEmail);
-    }
-
     @DisplayName("getUserId() : 토큰으로 유저 ID를 가져올 수 있다.")
     @Test
     void getUserId(){

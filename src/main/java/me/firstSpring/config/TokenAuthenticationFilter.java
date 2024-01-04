@@ -27,23 +27,10 @@ public class TokenAuthenticationFilter extends OncePerRequestFilter {
 
         String authorizationHeader = request.getHeader(HEADER_AUTHORIZATION);
         System.out.println("request:"+request.getMethod());
-        if (authorizationHeader != null) {
-            // 토큰의 헤더 제거
-            String jwtToken = request.getHeader(HEADER_AUTHORIZATION).replace("Bearer ","");
-            System.out.println("jwtToken : "+jwtToken);
-            //토큰 값 분해
-            Claims claims = Jwts.parser().setSigningKey("study-springboot").parseClaimsJws(jwtToken).getBody();
-            System.out.println("claims : "+claims);
-            System.out.println("sub : "+claims.getSubject());
-            System.out.println("email : "+claims.get("email"));
-            System.out.println("role : "+claims.get("role"));
-        }
-        System.out.println("Header:"+authorizationHeader);
         String token = getAccessToken(authorizationHeader);
 
         if (tokenProvider.validToken(token)) {
             Authentication authentication = tokenProvider.getAuthentication(token);
-            System.out.println("authentication : "+authentication);
             SecurityContextHolder.getContext().setAuthentication(authentication);
         }
 

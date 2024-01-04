@@ -6,6 +6,7 @@ import lombok.RequiredArgsConstructor;
 import me.firstSpring.config.oauth.portal.FaceBookUserInfo;
 import me.firstSpring.config.oauth.portal.GoogleUserInfo;
 import me.firstSpring.config.oauth.portal.NaverUserInfo;
+import me.firstSpring.domain.Enum.Roles;
 import me.firstSpring.domain.User;
 import me.firstSpring.repository.OAuth2UserInfo;
 import me.firstSpring.repository.UserRepository;
@@ -26,12 +27,8 @@ public class OAuth2UserCustomService extends DefaultOAuth2UserService {
 
     @Override
     public OAuth2User loadUser(OAuth2UserRequest userRequest) throws OAuth2AuthenticationException {
-        System.out.println("userRequest : "+userRequest.getClientRegistration());
-        System.out.println("userRequestAccessToken : "+userRequest.getAccessToken());
-        System.out.println("getAttribute : "+super.loadUser(userRequest).getAttributes());
         //요청을 바탕으로 유저 정보를 담은 객체 반환
         OAuth2User user = super.loadUser(userRequest);
-        System.out.println("user : "+user);
         saveOrUpdate(user, userRequest);
         return user;
     }
@@ -59,7 +56,7 @@ public class OAuth2UserCustomService extends DefaultOAuth2UserService {
                 .orElse(User.builder()
                         .email(email)
                         .nickname(name)
-                        .role("USER")
+                        .role(Roles.ROLE_USER)
                         .provider(provider)
                         .provider_id(provider_id)
                         .build());

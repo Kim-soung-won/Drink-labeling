@@ -8,6 +8,7 @@ import me.firstSpring.config.oauth.OAuth2SuccessHandler;
 import me.firstSpring.config.oauth.OAuth2UserCustomService;
 import me.firstSpring.repository.RefreshTokenRepository;
 import me.firstSpring.repository.UserRepository;
+import me.firstSpring.service.UserDetailService;
 import me.firstSpring.service.UserService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -32,8 +33,8 @@ public class WebOAuthSecurityConfig{
     private final TokenProvider tokenProvider;
     private final RefreshTokenRepository refreshTokenRepository;
     private final UserService userService;
+    private final UserDetailService userDetailService;
     private final CorsConfig corsFilter;
-    private final UserRepository userRepository;
     @Bean
     public WebSecurityCustomizer configure(){ //시큐리티 기능(폼 로그인, 세션기능) 비활성화
         return (web) -> web.ignoring()
@@ -60,10 +61,10 @@ public class WebOAuthSecurityConfig{
         // 토큰 재발급 URL은 인증 없이 접근 가능하도록 설정
         http.authorizeHttpRequests() //Http요청에 대한 보안 구성 시작
                 .requestMatchers("/api/token").permitAll() //해당 경로에 대해서는 인증없이 허용
+                .requestMatchers("/api/first/**").permitAll()
                 .requestMatchers("/api/**").authenticated() //해당 경로에 대해서는 모든 경로에 대해 인증 필요
-                .requestMatchers("/api/user/**").hasAnyRole("USER","MANAGER","ADMIN")
-                .requestMatchers("/api/manager/**").hasAnyRole("MANAGER","ADMIN")
-                .requestMatchers("/api/admin/**").hasRole("ADMIN")
+                .requestMatchers("/api/user/**").hasAnyRole("ROLE_USER","ROLE_MANAGER","ROLE_ADMIN")
+                .requestMatchers("/api/admin/**").hasRole("ROLE_ADMIN")
                 .anyRequest().permitAll(); //나머지 모든 요청 인증 허용
 
         http.oauth2Login()
@@ -89,7 +90,7 @@ public class WebOAuthSecurityConfig{
     public OAuth2SuccessHandler oAuth2SuccessHandler() {
         return new OAuth2SuccessHandler(tokenProvider,refreshTokenRepository,
                 oAuth2AuthorizationRequestBasedOnCookieRepository(),
-                userService
+                userService,userDetailService
         );
     }
     @Bean

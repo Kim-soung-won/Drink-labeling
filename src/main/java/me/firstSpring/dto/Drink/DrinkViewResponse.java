@@ -15,8 +15,6 @@ public class DrinkViewResponse {
     private float fat;
     private String gro;
     private String other;
-    private float cafe;
-    private float na;
     public DrinkViewResponse(Drink drink){
         this.id = drink.getId();
         this.name = drink.getName();
@@ -26,7 +24,5 @@ public class DrinkViewResponse {
         this.fat = drink.getFat();
         this.gro = drink.getGro();
         this.other = drink.getOther();
-        this.cafe = drink.getCafe();
-        this.na=drink.getNa();
     }
 }

@@ -17,8 +17,6 @@ public class AddDrinkRequest {
     private float fat;
     private String gro;
     private String other;
-    private float cafe;
-    private float na;
 
     public Drink toEntity(){
         return Drink.builder()
@@ -29,8 +27,6 @@ public class AddDrinkRequest {
                 .fat(fat)
                 .gro(gro)
                 .other(other)
-                .cafe(cafe)
-                .na(na)
                 .build();
     }
 }

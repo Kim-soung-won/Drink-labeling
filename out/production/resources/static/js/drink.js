@@ -55,7 +55,6 @@ if (modifyButton) {
 const createButton = document.getElementById('create-btn');
 
 if (createButton) {
-    // 등록 버튼을 클릭하면 /api/articles로 요청을 보낸다
     createButton.addEventListener('click', event => {
         body = JSON.stringify({
             name: document.getElementById('name').value,
@@ -80,24 +79,6 @@ if (createButton) {
         httpRequest('POST','/api/drink', body, success, fail)
     });
 }
-
-//const aaButton = document.getElementById('aa-btn');
-//
-//if (aaButton) {
-//    // 등록 버튼을 클릭하면 /api/articles로 요청을 보낸다
-//    aaButton.addEventListener('click', event => {
-//        body = JSON.stringify({
-//        });
-//        function success() {
-//        };
-//        function fail() {
-//            alert('등록 실패했습니다.');
-//        };
-//    });
-//}
-
-
-
 
 // key 즉 자신이 가진 쿠키를 가져오는 함수
 function getCookie(key) {

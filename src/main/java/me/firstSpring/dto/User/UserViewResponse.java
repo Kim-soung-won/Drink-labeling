@@ -2,6 +2,7 @@ package me.firstSpring.dto.User;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import me.firstSpring.domain.Enum.Roles;
 import me.firstSpring.domain.User;
 
 import java.time.LocalDateTime;
@@ -13,7 +14,7 @@ public class UserViewResponse {
     private String email;
     private String password;
     private String nickname;
-    private String role;
+    private Roles role;
 
     public UserViewResponse(User user){
         this.id = user.getId();

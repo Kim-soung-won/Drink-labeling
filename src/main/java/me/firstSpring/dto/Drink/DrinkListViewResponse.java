@@ -13,8 +13,6 @@ public class DrinkListViewResponse {
     private final float fat;
     private final String gro;
     private final String other;
-    private final float cafe;
-    private final float na;
     public DrinkListViewResponse(Drink drink){
         this.id = drink.getId();
         this.name = drink.getName();
@@ -24,7 +22,5 @@ public class DrinkListViewResponse {
         this.fat = drink.getFat();
         this.gro = drink.getGro();
         this.other = drink.getOther();
-        this.cafe = drink.getCafe();
-        this.na = drink.getNa();
     }
 }

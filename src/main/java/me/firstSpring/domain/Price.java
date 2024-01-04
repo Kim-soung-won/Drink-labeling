@@ -15,7 +15,7 @@ public class Price {
     @Column(name = "id", updatable = false)
     private Long id;
 
-    @Column(name = "name", nullable = false)
+    @Column(name = "name", nullable = false, length = 20)
     private String name;
 
     @ManyToOne
@@ -28,13 +28,11 @@ public class Price {
     @Column(name = "size", nullable = false)
     private int size;
 
-    @Column(name = "gro", nullable = false)
+    @Column(name = "gro", nullable = false, length=10)
     private String gro;
 
-    @Column(name = "brand", nullable = false)
+    @Column(name = "brand", nullable = false, length = 10)
     private String brand;
-
-
     @Builder
     public Price(String name, int price, int size, String gro, String brand) {
         this.name = name;

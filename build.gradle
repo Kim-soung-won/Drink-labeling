@@ -23,7 +23,8 @@ dependencies {
 
     implementation 'org.springframework.boot:spring-boot-starter-web'
     //개발하며 필요한 기능의 의존성 입력한 값은 웹 관련 기능
-
+    implementation 'org.springframework.boot:spring-boot-starter-validation'
+//    @Valid 기능을 제공
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 //    스프링 부트용 JPA(Java Persistence API)
 

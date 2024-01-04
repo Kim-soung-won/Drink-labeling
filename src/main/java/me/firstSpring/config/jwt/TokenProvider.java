@@ -5,13 +5,14 @@ import lombok.RequiredArgsConstructor;
 import me.firstSpring.domain.User;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
 import java.time.Duration;
-import java.util.Collections;
-import java.util.Date;
-import java.util.Set;
+import java.util.*;
+import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
 @Service
@@ -52,7 +53,7 @@ public class TokenProvider {
     //토큰을 기반으로 인증 정보를 가져오는 메서드
     public Authentication getAuthentication(String token){
         Claims claims = getClaims(token);
-        Set<SimpleGrantedAuthority> authorities = Collections.singleton(new SimpleGrantedAuthority("ROLE_USER"));
+        Set<SimpleGrantedAuthority> authorities = Collections.singleton(new SimpleGrantedAuthority(getUserRole(token)));
 
         return new UsernamePasswordAuthenticationToken(new org.springframework.security.core.userdetails.
                 User(claims.getSubject(),"",authorities),token,authorities);
@@ -61,6 +62,10 @@ public class TokenProvider {
     public Long getUserId(String token){
         Claims claims = getClaims(token);
         return claims.get("id",Long.class);
+    }
+    public String getUserRole(String token){
+        Claims claims = getClaims(token);
+        return claims.get("role",String.class);
     }
 
     public String extractUsername(String token) {

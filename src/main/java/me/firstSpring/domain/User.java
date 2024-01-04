@@ -5,11 +5,11 @@ import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import me.firstSpring.domain.Enum.Roles;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -34,8 +34,9 @@ public class User implements UserDetails{
     @Column(name = "nickname", unique = true)
     private String nickname;
 
-    @Column(name = "role")
-    private String role;
+    @Enumerated(EnumType.STRING)
+    @Column(length = 10)
+    private Roles role;
 
     @Column(name = "provider")
     private String provider;
@@ -44,7 +45,7 @@ public class User implements UserDetails{
     private String provider_id;
 
     @Builder
-    public User(String email, String password, String nickname, String role, String provider, String provider_id){
+    public User(String email, String password, String nickname, Roles role, String provider, String provider_id){
         this.email = email;
         this.password = password;
         this.nickname = nickname;
@@ -58,13 +59,6 @@ public class User implements UserDetails{
     public Collection<? extends GrantedAuthority> getAuthorities(){
         return List.of(new SimpleGrantedAuthority("user"));
     }
-    public List<String> getRoleList(){
-        if(this.role.length()>0){
-            return Arrays.asList(this.role.split(","));
-        }
-        return new ArrayList<>();
-    }
-
     @Override
     public String getUsername(){
         return email;

@@ -5,128 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
   <title>인적사항 기입 창</title>
-  <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            background-color: #f0f0f0;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        }
-
-        .form-container {
-            background-color: white;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            width: 400px;
-        }
-
-        .form-container label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: bold;
-        }
-
-        .form-container input {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 16px;
-            box-sizing: border-box;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-        }
-
-        .form-container button {
-            background-color: yellow;
-            color: black;
-            padding: 10px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            width: 100%;
-        }
-
-       .payment-options {
-            display: flex;
-            flex-direction: row;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-
-        .payment-option {
-            display: flex;
-            align-items: center;
-            margin-bottom: 8px;
-            cursor: pointer;
-            flex-basis: calc(33.333% - 10px);
-        }
-
-        .custom-radio {
-            width: 16px;
-            height: 16px;
-            border: 2px solid #4caf50;
-            border-radius: 50%;
-            margin-right: 8px;
-            position: relative;
-            flex-shrink: 0;
-            transition: background-color 0.3s;
-        }
-
-        .custom-radio::before {
-            content: "";
-            width: 100%;
-            height: 100%;
-            background-color: #fff;
-            border-radius: 50%;
-            display: block;
-            position: absolute;
-            top: 0;
-            left: 0;
-        }
-
-        .payment-option input[type="radio"] {
-            opacity: 0;
-            width: 0;
-            height: 0;
-        }
-
-        .payment-option input[type="radio"]:checked + .custom-radio::before {
-            background-color: #4caf50;
-        }
-
-        .payment-option input[type="radio"]:checked + .custom-radio {
-            border-color: #4caf50;
-        }
-
-        .payment-option:hover .custom-radio::before {
-            background-color: #e0e0e0;
-        }
-
-        .payment-option:hover .custom-radio {
-            border-color: #e0e0e0;
-        }
-
-        /* 추가된 부분: 선택된 상태에서 라벨 배경색 변경 */
-        .payment-option input[type="radio"]:checked + .custom-radio::before,
-        .payment-option input[type="radio"]:checked + .custom-radio + span {
-            background-color: #4caf50;
-            color: #fff;
-        }
-        .priceContainer label {
-            display: inline-block;
-            margin-right: 10px; /* 라벨 사이의 간격을 조절할 수 있습니다. */
-        }
-    </style>
-  <link rel="stylesheet" href="/js/css/Style.css"/>
+  <link rel="stylesheet" href="/js/css/Payment.css"/>
 </head>
 <body>
 <div class="form-container">
-  <div class="news__img">
-  <img th:src="@{/js/img/drinkImage/{imageName}{size}.jpg(imageName=${price.name}, size=${price.size})}">
+  <div class="news__img" style="width: 300px;">
+    <img th:src="@{/js/img/drinkImage/{imageName}{size}.jpg(imageName=${price.name}, size=${price.size})}" style="width: 100%;">
   </div>
   <p>  </p>
   <p>  </p>
@@ -158,8 +42,8 @@
   <label for="phone">전화번호:</label>
   <input type="text" id="phone" name="phone" pattern="\d{3}-\d{4}-\d{4}" placeholder="010-1234-5678" required>
 
-  <label for="dob">생년월일:</label>
-  <input type="text" id="dob" name="dob" required pattern="\d{8}" placeholder="20231234">
+  <label for="birth">생년월일:</label>
+  <input type="text" id="birth" name="birth" required pattern="\d{8}" placeholder="20231234">
 
 
   <label for="quantity">수량(6개입):</label>
@@ -168,5 +52,6 @@
   <button type="submit" onclick="requestPay()">카카오페이 결제하기</button>
 </div>
 <script src="/js/payment.js"></script>
+<script src="/js/paymentData.js"></script>
 </body>
 </html>

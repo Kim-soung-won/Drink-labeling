@@ -45,7 +45,7 @@ public class DrinkService {
         Drink drink = drinkRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("not found: " + id));
         drink.update(request.getName(), request.getCal(), request.getCar(),request.getPro() , request.getFat(),
-                request.getGro(), request.getOther(), request.getCafe(), request.getNa());
+                request.getGro(), request.getOther());
 
         return drink;
     }
