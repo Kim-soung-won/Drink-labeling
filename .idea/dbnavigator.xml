@@ -14,13 +14,13 @@
   <component name="DBNavigator.Project.DatabaseConsoleManager">
     <connection id="63daf406-ba8b-4696-8750-b15b89d268b9">
       <console name="Connection" type="STANDARD" schema="blog" session="Main"><![CDATA[use blog
-select * from drink
+select * from price
 select * from users
 select * from user_details_basic
 select * from orders
 delete from user_details_basic where id >8
 alter table users ADD column 
-update users set role = 'ROLE_USER' where id>0
+update orders set recipient_address = 'ROLE_USER' where order_id=2
 alter table user_details_basic add column card_num varchar(20)
 drop table user_details_basic
 

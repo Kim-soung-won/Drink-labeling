@@ -2,6 +2,7 @@ var IMP = window.IMP;
 IMP.init('imp76806111') // 예: 'imp00000000a'
 
 
+
 function generateUniqueNumber() {
     // 현재 시간을 이용하여 고유한 숫자 생성
     const timestamp = Date.now();
@@ -16,12 +17,13 @@ function generateUniqueNumber() {
 }
 
 function requestPay() {
+    let product_id = document.getElementById('price-id').value;
     let price = document.getElementById('price');
     let priceText = parseInt(price.innerText, 10);
     let quantity = parseInt(document.getElementById('quantity').value, 10);
     let drinkName = document.getElementById('drinkName');
     let drinkNameText = drinkName.innerText;
-    let address = document.getElementById('address').value;
+    let recipient_address = document.getElementById('address').value;
     let phone = document.getElementById('phone').value;
     let name = document.getElementById('name').value;
 
@@ -36,12 +38,28 @@ function requestPay() {
       buyer_email: "dldbsghks8@gmail.com",
       buyer_name: name,
       buyer_tel: phone,
-      buyer_addr: address,
+      buyer_addr: recipient_address,
       buyer_postcode: "01181"
     },
     function (rsp) { // callback
       if (rsp.success) {
               console.log(rsp);
+
+              // 결제가 성공하면 API로 POST 요청을 보냅니다.
+              body = JSON.stringify({
+                  recipient_address: recipient_address,
+                  count: quantity,
+                  recipient_contact_number: phone,
+                  order_state : "BEFORE",
+                  product_id : product_id
+                  // 다른 필요한 데이터를 API로 보내려면 여기에 추가하세요.
+              });
+              console.log(body);
+              httpRequest('POST', "/api/orders", body, function () {
+                  console.log('결제 확인을 API로 성공적으로 전송했습니다.');
+              }, function () {
+                  console.error('API로 결제 확인 전송에 실패했습니다.');
+              });
           } else {
               console.log(rsp);
       }

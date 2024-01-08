@@ -32,17 +32,7 @@ public class UserDetailService{
     @Transactional
     public UserDetailBasic saveFirst(AddUserDetailRequest request){
         System.out.println("user Service");
-        System.out.println("user_Id : "+ request.getUser_id());
-        return userDetailBasicRepository.save(UserDetailBasic.builder()
-                .name(request.getName())
-                .birth(request.getBirth())
-                .sex(request.getSex())
-                .phoneNumber(request.getPhoneNumber())
-                .email(request.getEmail())
-                .address(request.getAddress())
-                .cardNum(request.getCardNum())
-                .user_id(userService.findById(request.getUser_id()))
-                .build());
+        return userDetailBasicRepository.save(request.toEntity(userService.findById(request.getUser_id())));
     }
 
 

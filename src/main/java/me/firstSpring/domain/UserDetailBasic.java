@@ -44,10 +44,10 @@ public class UserDetailBasic {
     @OneToOne
     @JoinColumn(name = "user_id", referencedColumnName = "id")
     private User user;
-
-    //
-    @OneToMany(mappedBy = "userId")
-    private List<Orders> orders = new ArrayList<>(); // ArrayList로 초기화하면 ADD할때 null포인터가 안나타난다. 관례로 사용한다.
+//
+//    //
+//    @OneToMany(mappedBy = "userId")
+//    private List<Orders> orders = new ArrayList<>(); // ArrayList로 초기화하면 ADD할때 null포인터가 안나타난다. 관례로 사용한다.
 
     // 생성자를 통한 초기화 코드
     @Builder

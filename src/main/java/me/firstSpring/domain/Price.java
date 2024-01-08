@@ -6,6 +6,9 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
@@ -33,6 +36,7 @@ public class Price {
 
     @Column(name = "brand", nullable = false, length = 10)
     private String brand;
+
     @Builder
     public Price(String name, int price, int size, String gro, String brand) {
         this.name = name;

@@ -1,6 +1,6 @@
 const createButton = document.getElementById('saveButton');
 var user_id = parseInt(searchParam('FJEOFEONVISAKODOAJ'));
-console.log(user_id);
+
 function searchParam(key) {
     return new URLSearchParams(location.search).get(key);
 }
