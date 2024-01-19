@@ -14,7 +14,6 @@ public class AddOrderRequest {
     private int count;
     private String recipient_contact_number;
     private OrderState order_state;
-    private Long user_id;
     private Long product_id;
     public Orders toEntity(UserDetailBasic user, Price price){
         return Orders.builder()
