@@ -50,10 +50,13 @@ function handleImageUpload(event) {
                     var coke = data.drinks[maxProbabilityIndex];
                     console.log(coke);
                     function success() {
+                            location.replace(`/data/${coke}`);
                             };
                     function fail() {
+                            console.log("222")
                             };
-                    httpRequest('GET',`/data/${coke}`, null, success, fail)
+                    console.log(coke)
+                    httpRequest('GET',`/data/${coke}`, null, success, fail);
                   })
                   .catch(error => console.error('Error loading JSON:', error));
             };
