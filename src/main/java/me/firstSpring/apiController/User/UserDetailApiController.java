@@ -21,13 +21,11 @@ public class UserDetailApiController {
     private final UserDetailService userDetailService;
     private final UserService userService;
     @PostMapping("/api/userData/details")
-    @Transactional
     public ResponseEntity<UserDetailBasic> saveUserDetail(@RequestBody @Valid AddUserDetailRequest request, Authentication authentication){
         UserDetailBasic userDetailBasic = userDetailService.save(request, authentication.getName());
         return ResponseEntity.status(HttpStatus.CREATED).body(userDetailBasic);
     }
     @PostMapping("/api/first/userData/details")
-    @Transactional
     public ResponseEntity<UserDetailBasic> saveFirstUserDetail(@RequestBody @Valid AddUserDetailRequest request){
         UserDetailBasic userDetailBasic = userDetailService.saveFirst(request);
         System.out.println("이름 : " + request.getName());
@@ -44,7 +42,6 @@ public class UserDetailApiController {
         return ResponseEntity.ok(new UserDetailViewResponse(userDetailBasic));
     }
     @PutMapping("/api/userData/details")
-    @Transactional
     public ResponseEntity<UserDetailBasic> updateUserDetail(@RequestBody UpdateUserDetailRequest request,
                                                             Authentication authentication){
         System.out.println("authentication"+authentication);

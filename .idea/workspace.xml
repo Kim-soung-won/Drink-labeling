@@ -5,11 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="73222905-ea21-49f9-87a0-dccc1c9ea8d4" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/dbnavigator.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dbnavigator.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/7.5.1/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.5.1/checksums/checksums.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/7.5.1/checksums/sha1-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.5.1/checksums/sha1-checksums.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/resources/static/js/upload.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/resources/static/js/upload.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/upload.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/upload.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/firstSpring/apiController/User/UserDetailApiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/firstSpring/apiController/User/UserDetailApiController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -235,6 +235,16 @@
       <workItem from="1706686539324" duration="1351000" />
       <workItem from="1707122553909" duration="5458000" />
       <workItem from="1707180259910" duration="57000" />
+      <workItem from="1707182804480" duration="2645000" />
+      <workItem from="1707197885129" duration="603000" />
+      <workItem from="1707219912660" duration="258000" />
+      <workItem from="1707785016239" duration="19000" />
+      <workItem from="1707894338315" duration="2445000" />
+      <workItem from="1707983367281" duration="23000" />
+      <workItem from="1708336235177" duration="14000" />
+      <workItem from="1708337134576" duration="1063000" />
+      <workItem from="1708599134003" duration="4586000" />
+      <workItem from="1708649342958" duration="170000" />
     </task>
     <servers />
   </component>
