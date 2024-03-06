@@ -18,7 +18,7 @@ public class viewController {
     @GetMapping("/loginForm")
     public String loginForm(){
 
-        return "test/loginForm";
+        return "test/loginform";
     }
 
     @GetMapping("/joinForm")
