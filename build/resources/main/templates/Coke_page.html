@@ -1,0 +1,165 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns:th="http://www.thymeleaf.org">
+<html>
+
+<head>
+    <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <link rel="stylesheet" href="/js/css/Style.css"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.3.5/js/swiper.min.js"></script>
+</head>
+
+<body>
+    <div class="db_container">
+      <div class="drink_img">
+        <img th:src="@{/js/img/drinkImage/{imageName}.jpg(imageName=${drink.name})}" />
+      </div>
+      <div class="db_container_ii">
+        <div class="drink_data">
+          <label>
+            <p class="textBold" th:text="'음료명 : '+${drink.name}" ></p>
+            <p class="textBold" th:text="'분류 : '+${drink.gro}" ></p>
+            <p class="textBold" th:text="'제조사 : '+${drink.other}" ></p>
+          </label>
+        </div>
+        <a th:href="@{/dataPrice/{data}(data=${drink.name})}"  class="move_to_buy">
+          <div>
+            <label>
+              <br> 구매 <br> 화면으로
+            </label>
+          </div>
+        </a>
+      </div>
+    </div>
+    <div class="wrapper">
+        <div class="background">
+          <img src="https://res.cloudinary.com/muhammederdem/image/upload/q_60/v1537132206/news-slider/background.webp" alt="">
+        </div>
+        <div class="item-bg"></div>
+      
+        <div class="news-slider">
+          <div class="news-slider__wrp swiper-wrapper">
+            <div class="news-slider__item swiper-slide">
+              <a href="#" class="news__item">
+                <div class="news-date">
+                  <span class="news-date__title">열량(Kcal)</span>
+                  <span class="news-date__txt">01</span>
+                </div>
+                <div class="news__title" th:text="${drink.name}+'의 칼로리는 100g 당 '+${drink.cal}+'Kcal 입니다.'">
+                </div>
+                <p class="news__txt">
+                <br>하루 섭취 권장량은 대한민국 표준 남성 기준 2305Kcal, 여성 기준으로 1882Kcal 입니다.
+                </p>
+      
+                <div class="news__img">
+                    <img src="/js/img/drinkImage/Kcal.jpg" alt="news">
+                </div>
+              </a>
+            </div>
+
+            <div class="news-slider__item swiper-slide">
+              <a href="#" class="news__item">
+                <div class="news-date">
+                  <span class="news-date__title">당</span>
+                  <span class="news-date__txt">02</span>
+                </div>
+                <div class="news__title" th:text="${drink.name}+'의 당은 100g 당 '+${drink.car}+'g 입니다.'">
+                    코카콜라 한 캔의 탄수화물은 38g 입니다.
+                </div>
+
+                <p class="news__txt">
+                <br>하루 섭취 권장량은 대한민국 표준 남성 기준 346g, 여성 기준으로 282g 입니다.
+                </p>
+
+                <div class="news__img">
+                    <img src="/js/img/drinkImage/rice.jpg" alt="news">
+                </div>
+              </a>
+            </div>
+
+            <div class="news-slider__item swiper-slide">
+              <a href="#" class="news__item">
+                <div class="news-date">
+                  <span class="news-date__title">단백질</span>
+                  <span class="news-date__txt">04</span>
+                </div>
+                <div class="news__title" th:text="${drink.name}+'의 단백질은 100g 당 '+${drink.pro}+'g 입니다.'">
+                </div>
+
+                <p class="news__txt">
+                  <br>세계 보건 기구(WHO) 기준 성인의 최소 필요 단백질은 600mg 이며, 최대 2000mg 를 넘기지 않는 것을 권장하고 있습니다.
+                </p>
+
+                <div class="news__img">
+                  <img src="/js/img/drinkImage/protein.jpg" alt="news">
+                </div>
+              </a>
+            </div>
+            <div class="news-slider__item swiper-slide">
+              <a href="#" class="news__item">
+                <div class="news-date">
+                  <span class="news-date__title">지방</span>
+                  <span class="news-date__txt">04</span>
+                </div>
+                <div class="news__title" th:text="${drink.name}+'의 지방은 100g 당 '+${drink.fat}+'g 입니다.'">
+                </div>
+
+                <p class="news__txt">
+                  <br>세계 보건 기구(WHO) 기준 성인의 최소 필요 지방은 600mg 이며, 최대 2000mg 를 넘기지 않는 것을 권장하고 있습니다.
+                </p>
+
+                <div class="news__img">
+                  <img src="/js/img/drinkImage/pat.jpg" alt="news">
+                </div>
+              </a>
+            </div>
+
+
+
+
+
+
+          </div>
+
+
+        </div>
+      
+          <div class="news-slider__ctr">
+      
+            <div class="news-slider__arrows">
+              <button class="news-slider__arrow news-slider-prev">
+                <span class="icon-font">
+                  <svg class="icon icon-arrow-left"><use xlink:href="#icon-arrow-left"></use></svg>
+                </span>
+              </button>
+              <button class="news-slider__arrow news-slider-next">
+                <span class="icon-font">
+                  <svg class="icon icon-arrow-right"><use xlink:href="#icon-arrow-right"></use></svg>
+                </span>
+              </button>
+            </div>
+      
+            <div class="news-slider__pagination"></div>
+          </div>
+      
+        </div>
+      
+      </div>
+      
+      <svg hidden="hidden">
+        <defs>
+          <symbol id="icon-arrow-left" viewBox="0 0 32 32">
+            <title>arrow-left</title>
+            <path d="M0.704 17.696l9.856 9.856c0.896 0.896 2.432 0.896 3.328 0s0.896-2.432 0-3.328l-5.792-5.856h21.568c1.312 0 2.368-1.056 2.368-2.368s-1.056-2.368-2.368-2.368h-21.568l5.824-5.824c0.896-0.896 0.896-2.432 0-3.328-0.48-0.48-1.088-0.704-1.696-0.704s-1.216 0.224-1.696 0.704l-9.824 9.824c-0.448 0.448-0.704 1.056-0.704 1.696s0.224 1.248 0.704 1.696z"></path>
+          </symbol>
+          <symbol id="icon-arrow-right" viewBox="0 0 32 32">
+            <title>arrow-right</title>
+            <path d="M31.296 14.336l-9.888-9.888c-0.896-0.896-2.432-0.896-3.328 0s-0.896 2.432 0 3.328l5.824 5.856h-21.536c-1.312 0-2.368 1.056-2.368 2.368s1.056 2.368 2.368 2.368h21.568l-5.856 5.824c-0.896 0.896-0.896 2.432 0 3.328 0.48 0.48 1.088 0.704 1.696 0.704s1.216-0.224 1.696-0.704l9.824-9.824c0.448-0.448 0.704-1.056 0.704-1.696s-0.224-1.248-0.704-1.664z"></path>
+          </symbol>
+        </defs>
+      </svg>
+      <script src="/js/func.js"></script>
+</body>
+
+</html>

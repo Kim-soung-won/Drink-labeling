@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
+  <title>인적사항 기입 창</title>
+  <link rel="stylesheet" href="/js/css/Payment.css"/>
+</head>
+<body>
+<div class="form-container">
+  <div class="news__img" style="width: 300px;">
+    <img th:src="@{/js/img/drinkImage/{imageName}{size}.jpg(imageName=${price.name}, size=${price.size})}" style="width: 100%;">
+  </div>
+  <p>  </p>
+  <p>  </p>
+  <p>  </p>
+  <p>  </p>
+  <p>  </p>
+  <div class="priceContainer">
+    <label>제품명 :</label>
+    <label for="quantity" id ="drinkName" th:text="${price.name}"></label>
+    <input type="hidden" id="price-id" th:value="${price.id}">
+  </div>
+  <p>  </p>
+  <div class="priceContainer">
+    <label>용량 :</label>
+    <label for="quantity" id ="size" th:text="${price.size}"></label>
+  </div>
+  <p>  </p>
+  <div class="priceContainer">
+    <label>가격 :</label>
+    <label for="quantity" id ="price" th:text="${price.price}"></label>
+  </div>
+</div>
+<div class="form-container">
+  <label for="name">성명:</label>
+  <input type="text" id="name" name="name" required>
+
+  <label for="address">주소:</label>
+  <input type="text" id="address" name="address" required>
+
+  <label for="phone">전화번호:</label>
+  <input type="text" id="phone" name="phone" pattern="\d{3}-\d{4}-\d{4}" placeholder="010-1234-5678" required>
+
+  <label for="birth">생년월일:</label>
+  <input type="text" id="birth" name="birth" required pattern="\d{8}" placeholder="20231234">
+
+
+  <label for="quantity">수량(6개입):</label>
+  <input type="text" id="quantity" name="quantity" pattern="[0-9]+" required>
+
+  <button type="submit" onclick="requestPay()">카카오페이 결제하기</button>
+</div>
+<script src="/js/payment.js"></script>
+<script src="/js/paymentData.js"></script>
+</body>
+</html>
