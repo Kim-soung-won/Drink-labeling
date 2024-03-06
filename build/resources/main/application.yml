@@ -38,8 +38,8 @@ spring:
               - email
               - public_profile
             client-name: Naver
-            authorization-grant-type: authorization_code
-            redirect-uri: http://springboot-developer-env-1.eba-9jw9shh8.ap-northeast-2.elasticbeanstalk.com/login/oauth2/code/naver
+            authorization-grant-type: authorization_code #OAuth 사용 방식 중 Authorization Code Grant Type 방식 사용 Access 토큰을 받아 사용하는 방식
+            redirect-uri: http://localhost:8080/login/oauth2/code/naver
         provider:
           naver:
             authorization-uri: http://nid.naver.com/oauth2.0/authorize
