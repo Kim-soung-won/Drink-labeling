@@ -46,3 +46,8 @@ Main 페이지
 [산출물.pdf](https://prod-files-secure.s3.us-west-2.amazonaws.com/db817909-074d-4c90-92e8-b4cf9f841230/ab1467b2-2c2f-48e3-a368-b6fcda34294c/%EC%82%B0%EC%B6%9C%EB%AC%BC.pdf)
 
 
+### 문제 해결 부분
+1. JWT와 연계된 마이페이지(개인정보 출력)
+2. CNN 모델 웹 페이지 적재 방법
+3. OAuth2 회원가입 시 상세정보 추가 입력
+4. OAuth2 Naver API가 제공해주는 유저 json형식이 Google, Meta와 일치하지 않음
