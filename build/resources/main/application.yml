@@ -2,9 +2,9 @@
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://awseb-e-mxqdc8c8uu-stack-awsebrdsdatabase-vnt1jiyscxwr.cwrpks7ka0ox.ap-northeast-2.rds.amazonaws.com:3306/blog
-    username: ebroot
-    password: as3481611!
+    url: jdbc:mysql://localhost:3306/drink
+    username: root
+    password: As3481611!
   jpa:
     show-sql: true
     hibernate: create
@@ -32,14 +32,16 @@ spring:
               - email
               - public_profile
           naver:
-            client-id: yfivapFl7fe7uvF0LwWL
-            client-secret: Vs9B4_hL4o
+#            client-id: yfivapFl7fe7uvF0LwWL
+#            client-secret: Vs9B4_hL4o
+            client-id: GTC_itpbRroAS7A8XgZM
+            client-secret: CSu1GPCZBK
             scope:
               - email
               - public_profile
             client-name: Naver
             authorization-grant-type: authorization_code #OAuth 사용 방식 중 Authorization Code Grant Type 방식 사용 Access 토큰을 받아 사용하는 방식
-            redirect-uri: http://Springboot-developer-env-1.eba-9jw9shh8.ap-northeast-2.elasticbeanstalk.com/login/oauth2/code/naver #네이버 OAuth는 redirect 주소가 고정돼있지 않기 때문에 따로 명시해줘야한다.
+            redirect-uri: http://localhost:8080/login/oauth2/code/naver #네이버 OAuth는 redirect 주소가 고정돼있지 않기 때문에 따로 명시해줘야한다.
 
         provider:
           naver:
