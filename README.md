@@ -1,5 +1,6 @@
 CNN 인공지능 딥러닝 모델을 활용한 웹 쇼핑몰
 =================================================
+<a herf="https://github.com/Kim-soung-won/CNN_Image_Model">CNN 모델 Git</a>
 
 Main 페이지
 -------------
