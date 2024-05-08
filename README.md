@@ -42,7 +42,7 @@ Main 페이지
 ### 💼프로젝트 산출물
 ✔️ **프로젝트 산출물** 
 
-[산출물.pdf](https://prod-files-secure.s3.us-west-2.amazonaws.com/db817909-074d-4c90-92e8-b4cf9f841230/ab1467b2-2c2f-48e3-a368-b6fcda34294c/%EC%82%B0%EC%B6%9C%EB%AC%BC.pdf)
+[산출물.pdf](https://drive.google.com/file/d/1vEWjyIGY1tuDGbX_SZuJmAvKO6X_keEf/view?usp=sharing)
 
 
 ### 트러블 슈팅
